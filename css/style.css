@@ -18,6 +18,14 @@ a {
     text-decoration: none !important;
 }
 
+ul li a:hover{
+     color: #6366f1 !important;
+}
+
+p a:hover{
+     color: #6366f1 !important;
+}
+
 .text-primary{
     color: #6366f1 !important;
 }
