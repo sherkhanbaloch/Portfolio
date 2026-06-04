@@ -9,7 +9,7 @@
     content=".NET Developer, Dot Net Developer, Sher Khan Baloch, Sher Baloch, Sher Khan, Portfolio, Developer, Computer Science Student">
   <meta name="author" content="Sher Khan Baloch">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sher Khan Baloch | Full Stack .NET Developer</title>
+  <title>Sher Khan | Full Stack .NET Developer</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.css">
 
@@ -27,7 +27,7 @@
   <header>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid px-5">
-        <a class="navbar-brand text-primary fw-bold" href="#">Sher Khan Baloch</a>
+        <a class="navbar-brand text-primary fw-bold" href="#">Sher Khan</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -64,7 +64,7 @@
       <div class="container mt-5 border rounded-3 text-center shadow-lg bg-body">
         <div class="row p-4 pe-lg-0 pt-lg-5 align-items-start">
           <div class="col-md-8 p-3 p-lg-5 pt-lg-3 lh-2">
-            <h1 class="text-muted"><span class="text-primary">&lt;</span>Sher Khan Baloch<span
+            <h1 class="text-muted"><span class="text-primary">&lt;</span>Sher Khan<span
                 class="text-primary">/&gt;</span></h1>
             <br>
             <h3 class="text-muted">Full Stack .NET Developer</h3>
@@ -94,19 +94,23 @@
             <h2 class=" lh-1 mb-3 text-muted">About Me</h2>
             <hr>
             <p>Hello World! 👋</p>
-            <p>I'm Sher Khan Baloch, a passionate software developer 💻 with a strong foundation in Java, SQL and C#.
-              With over a year of hands-on experience in the field, I've honed my skills in crafting efficient Windows
-              Forms Applications, creating dynamic ASP.NET web forms, and leveraging the power of SQL Server for robust
-              database solutions.</p>
-            <p>📊 My expertise extends to Crystal Reports for insightful data visualization, and I take pride in my
-              logical problem-solving abilities. 🌟</p>
-            <p>👨‍🎓 Currently pursuing a Bachelor of Science in Computer Science, I am committed to staying at the
-              forefront of technology trends and delivering innovative software solutions.</p>
-            <p>🚀 Let's connect and explore how my skills and enthusiasm can contribute to your team's success, or
-              simply discuss the ever-evolving landscape of software development. Open to exciting job prospects! 🌐</p>
+            <p>I am a Computer Science graduate with experience developing modern web applications, enterprise business
+              systems, recruitment platforms, and content management solutions. My primary focus is on designing secure,
+              scalable, and maintainable software using Microsoft technologies and modern frontend frameworks.</p>
+            <p>My technical expertise includes C#, ASP.NET Core, Angular, RESTful APIs, Entity Framework Core, SQL
+              Server, JWT Authentication, Docker, and software design principles such as OOP, SOLID, and Design
+              Patterns. I have developed end-to-end applications covering authentication, authorization, database
+              architecture, reporting, business workflows, and AI-assisted recruitment processes.</p>
+            <p>Professionally, I completed an internship at Askari Bank, gaining exposure to enterprise IT operations
+              and software environments. I have also held leadership roles as President of the IEEE Larkana Chapter and
+              Campus Ambassador at Devsinc, contributing to technical communities and student development initiatives.
+            </p>
+            <p>I am interested in opportunities involving Full Stack Development, Backend Engineering, API Development,
+              and enterprise software solutions, where I can contribute to building reliable and impactful products.</p>
+
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
               <button type="button" class="btn btn-primary px-4 me-md-2"><a
-                  href="files/Sher Khan - Dot Net Developer - SZABIST University.pdf" target="_blank">Download
+                  href="files/Sher Khan - Full Stack Dot Net Developer - SZABIST University.pdf" target="_blank">Download
                   CV</a></button>
             </div>
           </div>
@@ -206,6 +210,14 @@
                 alt="Academy-Management-System">
               <div class="card-body">
                 <p class="card-text text-center">Academy Management System</p>
+                <div class="row d-flex justify-content-between">
+                  <div class="col-md-1">
+                    <a href="#" class="text-primary"><i class="fab fa-github"></i></a>
+                  </div>
+                  <div class="col-md-1">
+                    <a href="#" class="text-danger"><i class="fab fa-youtube"></i></a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -260,9 +272,9 @@
         <div class="row">
           <div class="col-md-4 col-sm-12 my-3">
             <div class="card border-0 border-bottom border-primary shadow-sm">
-              <img src="img/Desktop Applications/Quiz-Game.png" class="card-img-top" alt="Quiz-Game ">
+              <img src="img/Desktop Applications/File-Monitor-App.jpg" class="card-img-top" alt="File-Monitor-App ">
               <div class="card-body">
-                <p class="card-text text-center">Quiz Game</p>
+                <p class="card-text text-center">File Monitor App</p>
               </div>
             </div>
           </div>
@@ -391,17 +403,19 @@
             </p>
           </div>
           <div class="col-md-7 p-5">
-            <form action="https://formspree.io/f/xaykeepy" method="POST" class="row g-3">
+            <form action="https://formspree.io/f/xaykeepy" method="POST" class="row g-3"
+              onsubmit="return FormValidation()">
               <div class="col-md-6">
-                <label for="name" class="form-label">Name</label>
+                <label for="name" class="form-label">Name <span id="nameMsg" class="text-danger"></span> </label>
                 <input type="text" id="name" name="name" class="form-control" required>
               </div>
               <div class="col-md-6">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="form-label">Email <span id="emailMsg" class="text-danger"></span></label>
                 <input type="email" id="email" name="email" class="form-control" required>
               </div>
               <div class="col-12">
-                <label for="message" class="form-label">Message</label>
+                <label for="message" class="form-label">Message <span id="messageMsg"
+                    class="text-danger"></span></label>
                 <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
               </div>
               <div class="col-12">
