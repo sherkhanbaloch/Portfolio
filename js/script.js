@@ -1,6 +1,6 @@
 
 var typed = new Typed('#typed', {
-    strings: ['Desktop Application Developer', 'Web Application Developer', 'CS Undergrad', 'Freelancer'],
+    strings: ['Software Engineer (.NET)', 'Having 4+ Years of Experience', 'BSCS Graduate', 'Desktop and Web Application Developer'],
     backSpeed: 50,
     typeSpeed: 50,
     smartBackspace: true,
