@@ -9,10 +9,6 @@ html {
     overflow-x: hidden;
 }
 
-body {
-    /* background-color: rgb(249 249 255) !important; */
-}
-
 a {
     color: black !important;
     text-decoration: none !important;
@@ -54,4 +50,40 @@ p a:hover{
 
 #typed {
     color: #6366f1 !important;
+}
+
+/* Portfolio Tabs */
+.tab-navigation {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    background: #f8f9fa;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.tab-btn:hover {
+    background: #e9ecef;
+}
+
+.tab-btn.active {
+    background: #6366f1;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
 }

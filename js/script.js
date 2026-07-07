@@ -1,4 +1,5 @@
 
+// Hero Section Typed.js
 var typed = new Typed('#typed', {
     strings: ['Software Engineer (.NET)', 'Having 4+ Years of Experience', 'BSCS Graduate', 'Desktop and Web Application Developer'],
     backSpeed: 50,
@@ -7,24 +8,21 @@ var typed = new Typed('#typed', {
     loop: true
 });
 
+// Portfolio
+document.addEventListener('DOMContentLoaded', function() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
 
-// Form Validation
-function FormValidation() {
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons and contents
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
 
-    let uname = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let message = document.getElementById("message").value;
-
-    if (uname == "") {
-        document.getElementById("nameMsg").innerHTML = "*";
-        return false;
-    }
-    if (email == "") {
-        document.getElementById("emailMsg").innerHTML = "*";
-        return false;
-    }
-    if (message == "") {
-        document.getElementById("messageMsg").innerHTML = "*";
-        return false;
-    }
-}
+            // Add active class to clicked button and corresponding content
+            btn.classList.add('active');
+            const tabId = btn.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+});
