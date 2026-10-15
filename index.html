@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sher Khan Baloch | Software Engineer & .NET Developer</title>
+  <title>Sher Khan | .NET & AI Software Engineer</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Three.js & GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -20,34 +20,40 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <style>
+    /* LIGHT MODE BY DEFAULT */
     :root {
-      --bg-primary: #05050a;
+      --bg-primary: #f8fafc;
+      --bg-secondary: #eef2ff;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --glass-bg: rgba(255, 255, 255, 0.78);
+      --glass-border: rgba(15, 23, 42, 0.08);
+      --glass-shadow: 0 20px 45px -15px rgba(15, 23, 42, 0.07);
+      --modal-bg: rgba(255, 255, 255, 0.96);
+      --pill-bg: rgba(15, 23, 42, 0.05);
+    }
+
+    /* DARK MODE OVERRIDES */
+    body.dark-mode {
+      --bg-primary: #06070e;
+      --bg-secondary: #0f1123;
       --text-primary: #f8fafc;
       --text-secondary: #cbd5e1;
       --text-muted: #94a3b8;
-      --glass-bg: rgba(15, 17, 30, 0.68);
+      --glass-bg: rgba(15, 18, 34, 0.72);
       --glass-border: rgba(255, 255, 255, 0.1);
-      --nav-bg: rgba(5, 5, 10, 0.8);
-      --modal-bg: rgba(10, 12, 24, 0.96);
-    }
-
-    body.light-mode {
-      --bg-primary: #f1f5f9;
-      --text-primary: #0f172a;
-      --text-secondary: #334155;
-      --text-muted: #475569;
-      --glass-bg: rgba(255, 255, 255, 0.84);
-      --glass-border: rgba(15, 23, 42, 0.1);
-      --nav-bg: rgba(255, 255, 255, 0.88);
-      --modal-bg: rgba(255, 255, 255, 0.98);
+      --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      --modal-bg: rgba(12, 14, 26, 0.96);
+      --pill-bg: rgba(255, 255, 255, 0.07);
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-primary);
+      background: radial-gradient(circle at 15% 15%, var(--bg-secondary), var(--bg-primary) 70%);
       color: var(--text-primary);
       overflow-x: hidden;
-      transition: background-color 0.35s ease, color 0.35s ease;
+      transition: background 0.4s ease, color 0.3s ease;
     }
 
     h1, h2, h3, h4, .font-display {
@@ -70,21 +76,11 @@
 
     .glass {
       background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border: 1px solid var(--glass-border);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      box-shadow: var(--glass-shadow);
       transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    body.light-mode .glass {
-      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.07);
-    }
-
-    .glass-nav {
-      background: var(--nav-bg);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--glass-border);
     }
 
     .modal-surface {
@@ -93,197 +89,180 @@
       border: 1px solid var(--glass-border);
     }
 
-    /* Light Mode Text Overrides */
-    body.light-mode .text-slate-200,
-    body.light-mode .text-slate-300 {
-      color: #334155 !important;
+    .tech-pill {
+      background: var(--pill-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
     }
-    body.light-mode .text-slate-400 {
-      color: #475569 !important;
-    }
-    body.light-mode .text-white {
-      color: #0f172a !important;
-    }
-    body.light-mode .keep-white,
-    body.light-mode .keep-white * {
-      color: #ffffff !important;
-    }
-    body.light-mode .text-cyan-300,
-    body.light-mode .text-cyan-400 {
-      color: #0891b2 !important;
-    }
-    body.light-mode .text-violet-300,
-    body.light-mode .text-violet-400 {
-      color: #6d28d9 !important;
-    }
-    body.light-mode .text-emerald-300,
-    body.light-mode .text-emerald-400 {
-      color: #047857 !important;
-    }
-    body.light-mode .text-amber-300,
-    body.light-mode .text-amber-400 {
-      color: #b45309 !important;
+    .tech-pill:hover {
+      border-color: #7c3aed;
+      transform: translateY(-2px);
     }
 
+    .text-theme-primary { color: var(--text-primary); }
+    .text-theme-secondary { color: var(--text-secondary); }
+    .text-theme-muted { color: var(--text-muted); }
+
+    /* Interactive 3D Card Glare & Tilt */
     .tilt-card {
       transform-style: preserve-3d;
-      transition: transform 0.18s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+      will-change: transform;
+      transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
     }
     .tilt-card:hover {
-      border-color: rgba(139, 92, 246, 0.65);
-      box-shadow: 0 18px 40px -10px rgba(139, 92, 246, 0.35);
+      border-color: rgba(124, 58, 237, 0.45);
+      box-shadow: 0 24px 48px -12px rgba(124, 58, 237, 0.22);
     }
-    .tilt-content {
-      transform: translateZ(24px);
+    .tilt-depth {
+      transform: translateZ(28px);
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #06b6d4 100%);
+      background: linear-gradient(135deg, #6d28d9 0%, #4f46e5 50%, #0891b2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    body.dark-mode .gradient-text {
+      background: linear-gradient(135deg, #c084fc 0%, #818cf8 50%, #22d3ee 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    ::-webkit-scrollbar {
-      width: 8px;
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1.5deg); }
     }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-primary);
+    .animate-float {
+      animation: floatSlow 5s ease-in-out infinite;
     }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #8b5cf6, #06b6d4);
+      background: linear-gradient(180deg, #7c3aed, #06b6d4);
       border-radius: 4px;
     }
   </style>
 </head>
 <body class="selection:bg-violet-600 selection:text-white">
 
-  <!-- 3D WebGL Background Canvas -->
+  <!-- Fullscreen 3D WebGL Canvas -->
   <canvas id="webgl-canvas"></canvas>
 
-  <!-- Top Resource & Achievement Banner -->
-  <div class="relative z-20 bg-gradient-to-r from-violet-900/90 via-indigo-900/90 to-cyan-900/90 border-b border-white/10 text-xs sm:text-sm py-2 px-4 text-center backdrop-blur-md keep-white">
-    <span class="inline-flex flex-wrap items-center justify-center gap-2">
-      <span class="px-2 py-0.5 text-[11px] font-mono-code uppercase bg-violet-500 rounded-full font-semibold">CodeX Hub</span>
-      <a href="https://sherkhanbaloch.github.io/CodeX/" target="_blank" class="font-semibold underline hover:opacity-90">
-        View CodeX <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-0.5"></i>
-      </a>
-      <span class="hidden md:inline opacity-90">— My Handwritten Notes, Cheatsheets & Learning Material</span>
-    </span>
-  </div>
-
-  <!-- Navigation Bar -->
-  <header class="sticky top-0 z-30 glass-nav">
-    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#home-section" class="font-display text-xl font-bold tracking-tight flex items-center gap-1.5">
-        <span class="text-violet-500 font-mono-code">&lt;</span>
-        <span>Sher Khan</span>
-        <span class="text-cyan-400 font-mono-code">/&gt;</span>
+  <!-- Floating Pill Navbar -->
+  <header class="fixed top-4 inset-x-0 z-30 flex justify-center px-4">
+    <nav class="glass rounded-full px-5 py-2.5 flex items-center justify-between gap-6 max-w-4xl w-full shadow-lg">
+      <a href="#home" class="font-display font-bold text-lg tracking-tight flex items-center gap-1">
+        <span class="text-violet-600 font-mono-code">&lt;</span>
+        <span class="text-theme-primary">Sher Khan</span>
+        <span class="text-cyan-600 font-mono-code">/&gt;</span>
       </a>
 
-      <ul class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
-        <li><a href="#home-section" class="hover:text-violet-400 transition">Home</a></li>
-        <li><a href="#about-section" class="hover:text-violet-400 transition">About & Skills</a></li>
-        <li><a href="#experience-section" class="hover:text-violet-400 transition">Experience</a></li>
-        <li><a href="#portfolio-section" class="hover:text-violet-400 transition">Projects</a></li>
-        <li><a href="#services-section" class="hover:text-violet-400 transition">Services</a></li>
-        <li><a href="#contact-section" class="hover:text-violet-400 transition">Contact</a></li>
+      <ul class="hidden md:flex items-center gap-6 text-xs font-medium text-theme-secondary">
+        <li><a href="#home" class="hover:text-violet-600 transition">Home</a></li>
+        <li><a href="#bento" class="hover:text-violet-600 transition">Journey & Stack</a></li>
+        <li><a href="#projects" class="hover:text-violet-600 transition">Projects</a></li>
+        <li><a href="#contact" class="hover:text-violet-600 transition">Contact</a></li>
+        <li>
+          <a href="https://sherkhanbaloch.github.io/CodeX/" target="_blank" class="text-violet-600 font-mono-code font-semibold flex items-center gap-1">
+            CodeX <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </li>
       </ul>
 
-      <div class="flex items-center gap-2.5">
-        <!-- Theme Toggle Button -->
-        <button id="theme-toggle-btn" onclick="toggleTheme()"
-                class="px-3.5 py-2 rounded-xl text-xs font-mono-code glass hover:border-violet-500/50 transition flex items-center gap-2"
-                title="Switch Light / Dark Mode">
-          <i id="theme-icon" class="fa-solid fa-sun text-amber-400"></i>
-          <span id="theme-label" class="hidden sm:inline">Light</span>
+      <div class="flex items-center gap-2">
+        <!-- Light / Dark Mode Switch -->
+        <button onclick="toggleTheme()" id="theme-btn"
+                class="px-3 py-1.5 rounded-full text-xs font-mono-code tech-pill flex items-center gap-1.5"
+                title="Toggle Light / Dark Theme">
+          <i id="theme-icon" class="fa-solid fa-moon text-violet-600"></i>
+          <span id="theme-label" class="hidden sm:inline">Dark</span>
         </button>
 
-        <a href="https://sherkhanbaloch.github.io/CodeX/" target="_blank"
-           class="hidden sm:inline-flex px-3.5 py-2 rounded-xl text-xs font-mono-code uppercase tracking-wider glass hover:border-cyan-500/40 transition">
-          CodeX
-        </a>
-
-        <a href="#contact-section"
-           class="keep-white px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-violet-600 to-cyan-500 hover:opacity-90 transition shadow-lg shadow-violet-600/25">
+        <a href="#contact"
+           class="px-4 py-1.5 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-violet-600 to-cyan-600 hover:opacity-95 transition shadow-md shadow-violet-600/20">
           Hire Me
         </a>
       </div>
     </nav>
   </header>
 
-  <!-- Main Content Layer -->
-  <main class="relative z-10">
+  <main class="relative z-10 pt-24">
 
-    <!-- ================= HERO SECTION ================= -->
-    <section id="home-section" class="min-h-[88vh] max-w-7xl mx-auto px-6 py-16 lg:py-24 flex flex-col lg:flex-row items-center justify-between gap-12">
-      <div class="max-w-2xl space-y-6">
-        <div class="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full glass text-xs font-mono-code text-cyan-300 border border-cyan-500/30">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          Junior .NET Developer @ ICT Systems Pvt Ltd • Karachi, Pakistan
+    <!-- ================= 1. CLEAN HERO SECTION ================= -->
+    <section id="home" class="min-h-[82vh] max-w-6xl mx-auto px-6 py-12 flex flex-col lg:flex-row items-center justify-between gap-10">
+      <div class="max-w-xl space-y-5">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass text-xs font-mono-code text-violet-700 dark:text-violet-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Junior .NET Developer @ ICT Systems Pvt Ltd
         </div>
 
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-none">
-          <span class="text-violet-500 font-mono-code">&lt;</span>
-          <span class="gradient-text">Sher Khan</span>
-          <span class="text-cyan-400 font-mono-code">/&gt;</span>
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
+          Building Scalable <span class="gradient-text">.NET & AI</span> Systems.
         </h1>
 
-        <h2 class="text-xl sm:text-2xl font-medium text-slate-200">
-          Software Engineer <span class="text-violet-400">|</span> Full-Stack .NET & AI Developer
-        </h2>
-
-        <div class="text-base sm:text-xl font-mono-code text-slate-400 h-8">
-          Engineering <span id="typewriter" class="text-cyan-400 font-semibold border-r-2 border-cyan-400 pr-1"></span>
+        <div class="text-base sm:text-lg font-mono-code text-theme-muted h-7">
+          &gt; <span id="typewriter" class="text-cyan-600 font-semibold border-r-2 border-cyan-600 pr-1"></span>
         </div>
 
-        <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
-          Software Developer with hands-on experience gathering requirements, architecting, and deploying enterprise web and desktop applications for local and online clients. Currently building <strong>WebDesk Easy (ERP SaaS)</strong> at <strong>ICT Systems Pvt Ltd</strong> and graduate in <strong>BS Computer Science (3.63 CGPA)</strong> from <strong>SZABIST University</strong>.
+        <p class="text-theme-secondary text-sm sm:text-base leading-relaxed">
+          I'm <strong>Sher Khan</strong>, a BSCS graduate from <strong>SZABIST (3.63 CGPA)</strong> with <strong>4.5+ years</strong> of experience shipping ERP SaaS, AI/RAG pipelines, and commercial desktop & web apps.
         </p>
 
-        <div class="flex flex-wrap items-center gap-3.5 pt-2">
-          <a href="#portfolio-section" class="keep-white px-6 py-3.5 rounded-xl font-semibold bg-gradient-to-r from-violet-600 to-cyan-500 hover:scale-105 transition transform shadow-xl shadow-violet-600/30 flex items-center gap-2">
-            <span>Explore 24 Projects</span>
-            <i class="fa-solid fa-cubes"></i>
+        <div class="flex flex-wrap items-center gap-3 pt-1">
+          <a href="#projects" class="px-6 py-3 rounded-2xl text-sm font-semibold text-white bg-gradient-to-r from-violet-600 to-cyan-600 hover:scale-105 transition shadow-xl shadow-violet-600/25 flex items-center gap-2">
+            <span>View Work (24)</span>
+            <i class="fa-solid fa-cube"></i>
           </a>
-          <a href="#experience-section" class="px-5 py-3.5 rounded-xl font-semibold glass hover:border-violet-500/50 transition flex items-center gap-2">
-            <i class="fa-solid fa-briefcase text-violet-400"></i>
-            <span>Experience & Education</span>
+          <a href="https://github.com/sherkhanbaloch" target="_blank" class="px-4 py-3 rounded-2xl text-sm font-semibold glass hover:border-violet-500/40 transition flex items-center gap-2">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub</span>
           </a>
-          <a href="https://github.com/sherkhanbaloch" target="_blank" class="px-4 py-3.5 rounded-xl font-semibold glass hover:border-white/30 transition flex items-center gap-2" title="GitHub Profile">
-            <i class="fa-brands fa-github text-lg"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/sherkhanbaloch/" target="_blank" class="px-4 py-3.5 rounded-xl font-semibold glass hover:border-cyan-400/40 transition flex items-center gap-2 text-cyan-400" title="LinkedIn Profile">
-            <i class="fa-brands fa-linkedin text-lg"></i>
+          <a href="https://www.linkedin.com/in/sherkhanbaloch/" target="_blank" class="px-4 py-3 rounded-2xl text-sm font-semibold glass hover:border-cyan-500/40 transition flex items-center gap-2 text-cyan-600">
+            <i class="fa-brands fa-linkedin"></i>
+            <span>LinkedIn</span>
           </a>
         </div>
       </div>
 
-      <!-- 3D Floating Hero Visual Card -->
-      <div class="relative w-full max-w-md lg:max-w-lg flex justify-center">
-        <div class="tilt-card glass rounded-3xl p-7 border border-white/15 relative group w-full">
-          <div class="absolute -inset-1 bg-gradient-to-r from-violet-600 to-cyan-500 rounded-3xl blur-xl opacity-25 group-hover:opacity-45 transition"></div>
-          <div class="relative tilt-content flex flex-col items-center text-center space-y-5">
-            <img src="img/Developer-Icon.png"
-                 alt="Sher Khan Developer"
-                 class="w-56 sm:w-64 object-contain drop-shadow-[0_20px_30px_rgba(139,92,246,0.4)]" />
+      <!-- 3D Interactive Floating Profile & KPI Card -->
+      <div class="w-full max-w-sm lg:max-w-md">
+        <div class="tilt-card glass rounded-3xl p-6 relative group animate-float">
+          <div class="tilt-depth flex flex-col items-center text-center space-y-5">
+            <div class="relative">
+              <div class="w-36 h-36 rounded-3xl overflow-hidden border-2 border-violet-500/40 shadow-xl mx-auto bg-gradient-to-b from-violet-500/10 to-cyan-500/10">
+                <img src="https://sherkhanbaloch.github.io/Portfolio/img/about-me.png"
+                     alt="Sher Khan"
+                     class="w-full h-full object-cover" />
+              </div>
+              <span class="absolute -bottom-2 -right-2 px-2.5 py-1 rounded-full text-[10px] font-mono-code font-bold bg-emerald-500 text-white shadow">
+                Karachi, PK
+              </span>
+            </div>
 
-            <!-- Resume Quick Highlights Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full pt-2">
-              <div class="glass rounded-xl p-3">
-                <div class="text-xl font-bold text-violet-400">4.5+</div>
-                <div class="text-[10px] text-slate-400 uppercase font-mono-code">Years Exp</div>
+            <div>
+              <h2 class="text-xl font-bold text-theme-primary">Sher Khan Baloch</h2>
+              <p class="text-xs font-mono-code text-theme-muted">Software Engineer | .NET & Angular</p>
+            </div>
+
+            <!-- 4 Clean KPI Tiles -->
+            <div class="grid grid-cols-2 gap-2.5 w-full">
+              <div class="tech-pill rounded-2xl p-3 text-left">
+                <div class="text-xl font-bold text-violet-600">4.5+ Yrs</div>
+                <div class="text-[11px] text-theme-muted">Client & SaaS Exp</div>
               </div>
-              <div class="glass rounded-xl p-3">
-                <div class="text-xl font-bold text-cyan-400">3.63</div>
-                <div class="text-[10px] text-slate-400 uppercase font-mono-code">SZABIST CGPA</div>
+              <div class="tech-pill rounded-2xl p-3 text-left">
+                <div class="text-xl font-bold text-cyan-600">3.63 / 4.0</div>
+                <div class="text-[11px] text-theme-muted">BSCS - SZABIST University</div>
               </div>
-              <div class="glass rounded-xl p-3">
-                <div class="text-xl font-bold text-emerald-400">82.7%</div>
-                <div class="text-[10px] text-slate-400 uppercase font-mono-code">HEC NCEAC</div>
+              <div class="tech-pill rounded-2xl p-3 text-left">
+                <div class="text-xl font-bold text-emerald-600">82.7%</div>
+                <div class="text-[11px] text-theme-muted">HEC NCEAC Score</div>
               </div>
-              <div class="glass rounded-xl p-3">
-                <div class="text-xl font-bold text-amber-400">24+</div>
-                <div class="text-[10px] text-slate-400 uppercase font-mono-code">Apps Built</div>
+              <div class="tech-pill rounded-2xl p-3 text-left">
+                <div class="text-xl font-bold text-amber-600">Devsinc</div>
+                <div class="text-[11px] text-theme-muted">Campus Ambassador '25–26</div>
               </div>
             </div>
           </div>
@@ -291,401 +270,196 @@
       </div>
     </section>
 
-    <!-- ================= ABOUT & TECHNICAL SKILLS SECTION ================= -->
-    <section id="about-section" class="max-w-7xl mx-auto px-6 py-20">
-      <div class="glass rounded-3xl p-8 sm:p-12 lg:p-14 border border-white/10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-
-          <!-- Profile Picture & Achievements -->
-          <div class="lg:col-span-5 flex flex-col items-center space-y-6">
-            <div class="tilt-card relative group">
-              <div class="absolute -inset-2 bg-gradient-to-tr from-violet-600 via-indigo-500 to-cyan-400 rounded-3xl blur-xl opacity-35 group-hover:opacity-65 transition"></div>
-              <div class="relative glass rounded-2xl p-4 border border-white/20">
-                <img src="img/about-me.png"
-                     alt="Sher Khan Baloch"
-                     class="rounded-xl w-64 sm:w-72 object-cover mx-auto" />
-                <div class="mt-3 flex items-center justify-between px-2 text-xs font-mono-code text-slate-300">
-                  <span><i class="fa-solid fa-graduation-cap text-violet-400 mr-1.5"></i>BSCS — SZABIST</span>
-                  <span class="text-emerald-400 font-semibold">CGPA: 3.63/4.0</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Honours & Achievements Badges -->
-            <div class="w-full space-y-2.5">
-              <div class="glass rounded-xl p-3.5 flex items-center gap-3.5 border border-amber-500/30">
-                <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 text-lg shrink-0">
-                  <i class="fa-solid fa-award"></i>
-                </div>
-                <div>
-                  <div class="text-xs font-mono-code text-amber-400 uppercase">Campus Ambassador (2025–2026)</div>
-                  <div class="text-sm font-bold">Devsinc</div>
-                </div>
-              </div>
-
-              <div class="glass rounded-xl p-3.5 flex items-center gap-3.5 border border-cyan-500/30">
-                <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-lg shrink-0">
-                  <i class="fa-solid fa-medal"></i>
-                </div>
-                <div>
-                  <div class="text-xs font-mono-code text-cyan-400 uppercase">82.7 Percentile Score</div>
-                  <div class="text-sm font-bold">National Skill Competency Test (HEC & NCEAC)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bio & Categorized Resume Skills -->
-          <div class="lg:col-span-7 space-y-6">
-            <div class="inline-block px-3 py-1 rounded-md bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs font-mono-code">
-              // Executive Summary & Technical Arsenal
-            </div>
-
-            <h2 class="text-3xl sm:text-4xl font-bold">
-              About <span class="gradient-text">Sher Khan</span>
-            </h2>
-
-            <p class="text-slate-300 leading-relaxed">
-              I am a <strong>Software Engineer & .NET Developer</strong> with hands-on experience in gathering requirements, developing, and deploying desktop and web applications for local and online clients. Currently working as a <strong>Junior .NET Developer at ICT Systems Pvt Ltd</strong> contributing to <strong>WebDesk Easy</strong>, a cloud ERP SaaS platform built with ASP.NET Core MVC.
-            </p>
-
-            <p class="text-slate-300 leading-relaxed">
-              Previously, I worked over 4.5 years (2022–2026) as a part-time Software Developer at <strong>Research Gate, Pakistan</strong>, delivering custom ERP, accounting, POS, school, academy, super mart, and restaurant systems for <strong>10+ local businesses</strong>. I also engineered <strong>ZAB Careers</strong> (an AI-powered recruitment & ATS platform using Mistral AI) and <strong>ZAB GPT</strong> (a custom RAG assistant using Docker, AnythingLLM & OpenRouter) for SZABIST University.
-            </p>
-
-            <!-- Structured Skills Grid from Resume -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div class="glass rounded-xl p-4 border border-white/10">
-                <div class="text-xs font-mono-code uppercase text-violet-400 mb-2">
-                  <i class="fa-solid fa-code mr-1.5"></i>Languages & Frontend
-                </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">C#</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">SQL</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">TypeScript</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">JavaScript</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">Java</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass text-rose-300">Angular</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">Tailwind CSS</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">Bootstrap</span>
-                </div>
-              </div>
-
-              <div class="glass rounded-xl p-4 border border-white/10">
-                <div class="text-xs font-mono-code uppercase text-cyan-400 mb-2">
-                  <i class="fa-solid fa-server mr-1.5"></i>.NET Backend & Data Access
-                </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">ASP.NET Core MVC</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">Web API</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">EF Core</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass text-cyan-300">Dapper</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">SignalR</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">LINQ / ADO.NET</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">Web Forms</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">WinForms</span>
-                </div>
-              </div>
-
-              <div class="glass rounded-xl p-4 border border-white/10">
-                <div class="text-xs font-mono-code uppercase text-emerald-400 mb-2">
-                  <i class="fa-solid fa-database mr-1.5"></i>Databases & Reporting
-                </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">Microsoft SQL Server</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">MySQL</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass text-emerald-300">RDLC Reports</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass text-emerald-300">SAP Crystal Reports</span>
-                </div>
-              </div>
-
-              <div class="glass rounded-xl p-4 border border-white/10">
-                <div class="text-xs font-mono-code uppercase text-amber-400 mb-2">
-                  <i class="fa-solid fa-brain mr-1.5"></i>AI, DevOps & Tooling
-                </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass text-amber-300">Mistral AI / OpenRouter</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass text-amber-300">AnythingLLM (RAG)</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">Docker</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">Linux</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">Git / GitHub</span>
-                  <span class="px-2.5 py-1 rounded text-xs font-mono-code glass">Swagger / Postman</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
+    <!-- ================= 2. UNIFIED BENTO GRID (EXPERIENCE, EDUCATION & STACK) ================= -->
+    <section id="bento" class="max-w-6xl mx-auto px-6 py-16">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-mono-code uppercase tracking-widest text-violet-600">At a Glance</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-1">Experience & <span class="gradient-text">Tech Arsenal</span></h2>
         </div>
       </div>
-    </section>
 
-    <!-- ================= EXPERIENCE & EDUCATION TIMELINE SECTION ================= -->
-    <section id="experience-section" class="max-w-7xl mx-auto px-6 py-20">
-      <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
-        <span class="text-xs font-mono-code uppercase tracking-widest text-violet-400">Career & Academic Journey</span>
-        <h2 class="text-3xl sm:text-5xl font-bold">Experience & <span class="gradient-text">Education</span></h2>
-        <p class="text-slate-400 text-sm sm:text-base">Building production ERP SaaS platforms, custom business software, and AI-driven university systems.</p>
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <!-- Work Experience Column -->
-        <div class="lg:col-span-7 space-y-6">
-          <h3 class="text-lg font-mono-code uppercase tracking-wider text-cyan-400 flex items-center gap-2">
-            <i class="fa-solid fa-briefcase"></i> Professional Experience
-          </h3>
-
-          <!-- Role 1: ICT Systems Pvt Ltd -->
-          <div class="tilt-card glass rounded-2xl p-7 border-l-4 border-l-violet-500 relative">
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-              <span class="px-3 py-1 rounded-full text-xs font-mono-code bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+        <!-- Bento 1: Current Role (7 cols) -->
+        <div class="md:col-span-7 tilt-card glass rounded-3xl p-7 flex flex-col justify-between">
+          <div class="tilt-depth space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full text-xs font-mono-code font-semibold bg-emerald-500/15 text-emerald-600">
                 ● July 2026 – Present
               </span>
-              <span class="text-xs font-mono-code text-slate-400">Karachi, Pakistan</span>
+              <span class="text-xs font-mono-code text-theme-muted">ERP SaaS</span>
             </div>
-            <h4 class="text-2xl font-bold text-white">Junior .NET Developer</h4>
-            <div class="text-violet-400 font-semibold text-sm mb-4">ICT Systems Pvt Ltd</div>
-            <ul class="space-y-2.5 text-sm text-slate-300">
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-circle-check text-violet-400 mt-1 text-xs"></i>
-                <span>Contribute to the architecture, development, and maintenance of <strong>WebDesk Easy</strong>, a full-scale enterprise <strong>ERP SaaS product</strong> built with <strong>ASP.NET Core MVC</strong>.</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-circle-check text-violet-400 mt-1 text-xs"></i>
-                <span>Debug existing <strong>ASP.NET Web Forms</strong> modules and implement assigned feature enhancements and production fixes.</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-circle-check text-violet-400 mt-1 text-xs"></i>
-                <span>Engineer high-performance data layers and enterprise reporting using the <strong>Repository Pattern, Entity Framework Core, Dapper, and RDLC Reports</strong>.</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Role 2: Research Gate, Pakistan -->
-          <div class="tilt-card glass rounded-2xl p-7 border-l-4 border-l-cyan-500 relative">
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-              <span class="px-3 py-1 rounded-full text-xs font-mono-code bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                January 2022 – June 2026 (4.5 Years)
-              </span>
-              <span class="text-xs font-mono-code text-slate-400">Pakistan</span>
+            <div>
+              <h3 class="text-2xl font-bold text-theme-primary">Junior .NET Developer</h3>
+              <p class="text-sm font-semibold text-violet-600">ICT Systems Pvt Ltd • Karachi</p>
             </div>
-            <h4 class="text-2xl font-bold text-white">Software Developer (Part-Time)</h4>
-            <div class="text-cyan-400 font-semibold text-sm mb-4">Research Gate, Pakistan</div>
-            <ul class="space-y-2.5 text-sm text-slate-300">
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-circle-check text-cyan-400 mt-1 text-xs"></i>
-                <span>Gathered requirements directly from business owners and clients, translating operational workflows into relational database schemas and software suites.</span>
+            <ul class="space-y-2 text-sm text-theme-secondary">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-bolt text-violet-600 mt-1 text-xs"></i>
+                <span>Developing <strong>WebDesk Easy</strong> (Cloud ERP SaaS) using <strong>ASP.NET Core MVC</strong>.</span>
               </li>
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-circle-check text-cyan-400 mt-1 text-xs"></i>
-                <span>Developed, deployed, and maintained custom desktop and web applications for <strong>10+ local businesses</strong> including accounting firms, schools, academies, super marts, and restaurants.</span>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-bolt text-violet-600 mt-1 text-xs"></i>
+                <span>Engineering data access & reporting with <strong>Repository Pattern, EF Core, Dapper & RDLC</strong>.</span>
               </li>
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-circle-check text-cyan-400 mt-1 text-xs"></i>
-                <span>Delivered end-to-end solutions utilizing <strong>C#, WinForms, ASP.NET Web Forms, SQL Server, and SAP Crystal Reports</strong>.</span>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-bolt text-violet-600 mt-1 text-xs"></i>
+                <span>Maintaining & debugging legacy <strong>ASP.NET Web Forms</strong> enterprise modules.</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <!-- Education & Honours Column -->
-        <div class="lg:col-span-5 space-y-6">
-          <h3 class="text-lg font-mono-code uppercase tracking-wider text-violet-400 flex items-center gap-2">
-            <i class="fa-solid fa-graduation-cap"></i> Education & Distinctions
-          </h3>
-
-          <!-- SZABIST Card -->
-          <div class="tilt-card glass rounded-2xl p-7 border border-white/10 space-y-4">
+        <!-- Bento 2: Previous Role (5 cols) -->
+        <div class="md:col-span-5 tilt-card glass rounded-3xl p-7 flex flex-col justify-between">
+          <div class="tilt-depth space-y-4">
             <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full text-xs font-mono-code bg-violet-500/20 text-violet-300 border border-violet-500/30">
-                2022 – 2026
+              <span class="px-3 py-1 rounded-full text-xs font-mono-code font-semibold bg-cyan-500/15 text-cyan-600">
+                Jan 2022 – June 2026
               </span>
-              <span class="px-3 py-1 rounded-full text-xs font-mono-code bg-emerald-500/20 text-emerald-300 font-bold">
-                CGPA: 3.63 / 4.0
-              </span>
+              <span class="text-xs font-mono-code text-theme-muted">10+ Clients</span>
             </div>
-            <h4 class="text-2xl font-bold text-white">BS Computer Science</h4>
-            <div class="text-violet-400 font-semibold text-sm">SZABIST University — Karachi, Pakistan</div>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Spearheaded two flagship AI initiatives for the university: <strong>ZAB Careers (FYP)</strong>, an AI-powered Recruitment and Applicant Tracking System using Mistral AI, and <strong>ZAB GPT</strong>, a Dockerized RAG assistant for university career queries.
+            <div>
+              <h3 class="text-xl font-bold text-theme-primary">Software Developer</h3>
+              <p class="text-sm font-semibold text-cyan-600">Research Gate, Pakistan (Part-Time)</p>
+            </div>
+            <p class="text-sm text-theme-secondary leading-relaxed">
+              Gathered client requirements and delivered custom ERP, POS, accounting, school, super mart, and restaurant systems using <strong>C#, WinForms, Web Forms, SQL Server & Crystal Reports</strong>.
             </p>
           </div>
+        </div>
 
-          <!-- Devsinc & NCEAC Cards -->
-          <div class="tilt-card glass rounded-2xl p-6 border border-white/10 space-y-4">
-            <h4 class="text-lg font-bold text-white flex items-center gap-2">
-              <i class="fa-solid fa-trophy text-amber-400"></i> Key Achievements
-            </h4>
-
-            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
-              <div class="flex items-center justify-between text-xs font-mono-code text-amber-400 mb-1">
-                <span>DEVSINC</span>
-                <span>2025 – 2026</span>
-              </div>
-              <div class="font-bold text-base">Campus Ambassador — Devsinc</div>
-              <p class="text-xs text-slate-400 mt-1">Represented Devsinc at SZABIST University, bridging industry software engineering practices with student developer communities.</p>
+        <!-- Bento 3: Clean Visual Tech Matrix (8 cols) -->
+        <div class="md:col-span-8 tilt-card glass rounded-3xl p-7">
+          <div class="tilt-depth space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-bold text-theme-primary flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-violet-600"></i> Core Technology Stack
+              </h3>
+              <span class="text-xs font-mono-code text-theme-muted">Full-Stack .NET + AI</span>
             </div>
 
-            <div class="p-4 rounded-xl bg-white/5 border border-white/10">
-              <div class="flex items-center justify-between text-xs font-mono-code text-cyan-400 mb-1">
-                <span>HEC & NCEAC</span>
-                <span>TOP TIER SCORE</span>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+              <div class="tech-pill rounded-2xl p-3.5">
+                <div class="text-[11px] font-mono-code text-violet-600 font-semibold mb-1.5">BACKEND</div>
+                <div class="text-xs font-medium space-y-1 text-theme-primary">
+                  <div>C# / .NET Core</div>
+                  <div>ASP.NET MVC & API</div>
+                  <div>EF Core & Dapper</div>
+                  <div>SignalR / LINQ</div>
+                </div>
               </div>
-              <div class="font-bold text-base">82.7 Percentile — National Skill Competency Test</div>
-              <p class="text-xs text-slate-400 mt-1">Ranked in the 82.7th percentile nationwide in the Higher Education Commission (HEC) & NCEAC computing competency assessment.</p>
+
+              <div class="tech-pill rounded-2xl p-3.5">
+                <div class="text-[11px] font-mono-code text-cyan-600 font-semibold mb-1.5">FRONTEND & UI</div>
+                <div class="text-xs font-medium space-y-1 text-theme-primary">
+                  <div>Angular & TypeScript</div>
+                  <div>Tailwind & Bootstrap</div>
+                  <div>C# WinForms</div>
+                  <div>ASP.NET WebForms</div>
+                </div>
+              </div>
+
+              <div class="tech-pill rounded-2xl p-3.5">
+                <div class="text-[11px] font-mono-code text-emerald-600 font-semibold mb-1.5">DATA & REPORTS</div>
+                <div class="text-xs font-medium space-y-1 text-theme-primary">
+                  <div>MS SQL Server</div>
+                  <div>MySQL / ADO.NET</div>
+                  <div>RDLC Reports</div>
+                  <div>Crystal Reports</div>
+                </div>
+              </div>
+
+              <div class="tech-pill rounded-2xl p-3.5">
+                <div class="text-[11px] font-mono-code text-amber-600 font-semibold mb-1.5">AI & DEVOPS</div>
+                <div class="text-xs font-medium space-y-1 text-theme-primary">
+                  <div>Mistral AI / LLMs</div>
+                  <div>AnythingLLM (RAG)</div>
+                  <div>Docker & Linux</div>
+                  <div>Git / Swagger</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- Bento 4: Education & Distinctions (4 cols) -->
+        <div class="md:col-span-4 tilt-card glass rounded-3xl p-7 flex flex-col justify-between">
+          <div class="tilt-depth space-y-3">
+            <span class="px-3 py-1 rounded-full text-xs font-mono-code font-semibold bg-violet-500/15 text-violet-600">
+              SZABIST • 2022–2026
+            </span>
+            <h3 class="text-xl font-bold text-theme-primary">BS Computer Science</h3>
+            <div class="text-2xl font-bold gradient-text">CGPA: 3.63 / 4.0</div>
+            <div class="pt-2 border-t border-slate-500/15 space-y-1.5 text-xs text-theme-secondary">
+              <div>🏆 <strong>Devsinc</strong> Campus Ambassador</div>
+              <div>🥇 <strong>82.7 Percentile</strong> HEC & NCEAC</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- ================= PORTFOLIO SECTION (24 PROJECTS + ARCHITECTURE MODAL) ================= -->
-    <section id="portfolio-section" class="max-w-7xl mx-auto px-6 py-20">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+    <!-- ================= 3. SMART PORTFOLIO SHOWCASE (TOP 6 DEFAULT + FILTERS) ================= -->
+    <section id="projects" class="max-w-6xl mx-auto px-6 py-16">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
         <div>
-          <span class="text-xs font-mono-code uppercase tracking-widest text-violet-400">Click Any Card for 3D System Architecture</span>
-          <h2 class="text-3xl sm:text-5xl font-bold mt-2">Interactive <span class="gradient-text">Portfolio</span></h2>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-1">Featured <span class="gradient-text">Projects</span></h2>
         </div>
 
-        <!-- Category Filter Buttons -->
+        <!-- Clean Filter Pills -->
         <div class="flex flex-wrap gap-2">
-          <button onclick="filterProjects('all')" id="btn-all" class="filter-btn keep-white px-4 py-2 rounded-xl text-xs font-mono-code uppercase tracking-wider bg-violet-600 text-white transition">
+          <button onclick="filterProjects('featured')" id="btn-featured" class="filter-btn px-4 py-2 rounded-full text-xs font-mono-code font-semibold bg-violet-600 text-white shadow-md transition">
+            ★ Featured (6)
+          </button>
+          <button onclick="filterProjects('netcore')" id="btn-netcore" class="filter-btn px-4 py-2 rounded-full text-xs font-mono-code tech-pill transition">
+            .NET Core & AI (5)
+          </button>
+          <button onclick="filterProjects('webforms')" id="btn-webforms" class="filter-btn px-4 py-2 rounded-full text-xs font-mono-code tech-pill transition">
+            WebForms (9)
+          </button>
+          <button onclick="filterProjects('winforms')" id="btn-winforms" class="filter-btn px-4 py-2 rounded-full text-xs font-mono-code tech-pill transition">
+            WinForms (10)
+          </button>
+          <button onclick="filterProjects('all')" id="btn-all" class="filter-btn px-4 py-2 rounded-full text-xs font-mono-code tech-pill transition">
             All (24)
           </button>
-          <button onclick="filterProjects('netcore')" id="btn-netcore" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono-code uppercase tracking-wider glass hover:border-violet-500/40 text-slate-300 transition">
-            .NET Core, RAG & AI (5)
-          </button>
-          <button onclick="filterProjects('webforms')" id="btn-webforms" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono-code uppercase tracking-wider glass hover:border-violet-500/40 text-slate-300 transition">
-            ASP.NET WebForms (9)
-          </button>
-          <button onclick="filterProjects('winforms')" id="btn-winforms" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono-code uppercase tracking-wider glass hover:border-violet-500/40 text-slate-300 transition">
-            C# WinForms (10)
-          </button>
         </div>
       </div>
 
-      <!-- Dynamic Portfolio Grid -->
-      <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7"></div>
+      <!-- Cards Grid -->
+      <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
-    <!-- ================= SERVICES SECTION ================= -->
-    <section id="services-section" class="max-w-7xl mx-auto px-6 py-20">
-      <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
-        <span class="text-xs font-mono-code uppercase tracking-widest text-cyan-400">End-to-End Engineering</span>
-        <h2 class="text-3xl sm:text-5xl font-bold">My <span class="gradient-text">Services</span></h2>
-        <p class="text-slate-400 text-sm sm:text-base">From SaaS ERP modules and AI/RAG integrations to commercial desktop POS and financial suites.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="tilt-card glass rounded-2xl p-8 border border-white/10">
-          <div class="tilt-content space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-cyan-600/20 border border-cyan-500/40 flex items-center justify-center text-2xl text-cyan-400">
-              <i class="fa-solid fa-globe"></i>
-            </div>
-            <h3 class="text-2xl font-bold">Enterprise Web & ERP SaaS</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Scalable multi-tenant web applications, RESTful Web APIs, real-time SignalR dashboards, and ERP modules built with ASP.NET Core MVC, Angular, EF Core, Dapper, and RDLC/Crystal Reports.
-            </p>
-            <div class="pt-2 text-xs font-mono-code text-cyan-400">ASP.NET Core • Angular • EF Core • Dapper</div>
-          </div>
-        </div>
-
-        <div class="tilt-card glass rounded-2xl p-8 border border-white/10">
-          <div class="tilt-content space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-violet-600/20 border border-violet-500/40 flex items-center justify-center text-2xl text-violet-400">
-              <i class="fa-solid fa-brain"></i>
-            </div>
-            <h3 class="text-2xl font-bold">AI, LLM & RAG Solutions</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Custom AI recruitment engines (Mistral AI resume parsing) and Dockerized Retrieval-Augmented Generation (RAG) assistants powered by AnythingLLM and OpenRouter over custom PDF/DOCX datasets.
-            </p>
-            <div class="pt-2 text-xs font-mono-code text-violet-400">Mistral AI • RAG • Docker • AnythingLLM</div>
-          </div>
-        </div>
-
-        <div class="tilt-card glass rounded-2xl p-8 border border-white/10">
-          <div class="tilt-content space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-2xl text-emerald-400">
-              <i class="fa-solid fa-desktop"></i>
-            </div>
-            <h3 class="text-2xl font-bold">Desktop & POS Suites</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Commercial Windows desktop software for accounting, schools, academies, super marts, and restaurants featuring barcode POS billing, SQL Server transactions, and SAP Crystal Reports.
-            </p>
-            <div class="pt-2 text-xs font-mono-code text-emerald-400">C# WinForms • SQL Server • Crystal Reports</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= CONTACT SECTION ================= -->
-    <section id="contact-section" class="max-w-5xl mx-auto px-6 py-20">
-      <div class="glass rounded-3xl p-8 sm:p-14 border border-white/15">
-        <div class="text-center max-w-xl mx-auto mb-10 space-y-3">
-          <span class="text-xs font-mono-code uppercase tracking-widest text-cyan-400">Direct Channels</span>
-          <h2 class="text-3xl sm:text-4xl font-bold">Wanna Connect? <span class="gradient-text">Let's Talk</span></h2>
-          <p class="text-slate-400 text-sm">Available for .NET Engineering opportunities, enterprise consulting, and AI integration projects.</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <a href="mailto:sherbalochcs@gmail.com" class="tilt-card glass p-5 rounded-2xl flex items-center gap-4 hover:border-violet-500/50 transition">
-            <div class="w-12 h-12 rounded-xl bg-violet-500/20 flex items-center justify-center text-violet-400 text-xl shrink-0">
-              <i class="fa-solid fa-envelope"></i>
-            </div>
-            <div class="overflow-hidden">
-              <div class="text-xs text-slate-400">Email</div>
-              <div class="text-sm font-medium truncate">sherbalochcs@gmail.com</div>
-            </div>
-          </a>
-
-          <a href="tel:+923282342800" class="tilt-card glass p-5 rounded-2xl flex items-center gap-4 hover:border-emerald-500/50 transition">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl shrink-0">
-              <i class="fa-solid fa-phone"></i>
-            </div>
-            <div>
-              <div class="text-xs text-slate-400">Phone / WhatsApp</div>
-              <div class="text-sm font-medium">+92 328 2342800</div>
-            </div>
-          </a>
-
-          <div class="tilt-card glass p-5 rounded-2xl flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400 text-xl shrink-0">
-              <i class="fa-solid fa-location-dot"></i>
-            </div>
-            <div>
-              <div class="text-xs text-slate-400">Location</div>
-              <div class="text-sm font-medium">Karachi, Sindh, Pakistan</div>
-            </div>
+    <!-- ================= 4. MINIMAL CONTACT STRIP ================= -->
+    <section id="contact" class="max-w-5xl mx-auto px-6 py-16">
+      <div class="tilt-card glass rounded-3xl p-8 sm:p-10">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div class="space-y-2 text-center lg:text-left">
+            <span class="text-xs font-mono-code uppercase tracking-widest text-violet-600">Ready to Collaborate</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-theme-primary">Let's Build Your Next System</h2>
+            <p class="text-sm text-theme-secondary">Available for full-time .NET roles, ERP consulting, and AI integrations.</p>
           </div>
 
-          <a href="https://www.linkedin.com/in/sherkhanbaloch/" target="_blank" class="tilt-card glass p-5 rounded-2xl flex items-center gap-4 hover:border-cyan-500/50 transition">
-            <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-xl shrink-0">
-              <i class="fa-brands fa-linkedin"></i>
-            </div>
-            <div>
-              <div class="text-xs text-slate-400">LinkedIn</div>
-              <div class="text-sm font-medium">in/sherkhanbaloch</div>
-            </div>
-          </a>
-
-          <a href="https://github.com/sherkhanbaloch" target="_blank" class="tilt-card glass p-5 rounded-2xl flex items-center gap-4 hover:border-slate-400/50 transition">
-            <div class="w-12 h-12 rounded-xl bg-violet-500/15 flex items-center justify-center text-violet-400 text-xl shrink-0">
-              <i class="fa-brands fa-github"></i>
-            </div>
-            <div>
-              <div class="text-xs text-slate-400">GitHub</div>
-              <div class="text-sm font-medium">@sherkhanbaloch</div>
-            </div>
-          </a>
-
-          <a href="https://sherkhanbaloch.github.io/CodeX/" target="_blank" class="tilt-card glass p-5 rounded-2xl flex items-center gap-4 hover:border-pink-500/50 transition">
-            <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400 text-xl shrink-0">
-              <i class="fa-solid fa-book-open-reader"></i>
-            </div>
-            <div>
-              <div class="text-xs text-slate-400">Notes & Cheatsheets</div>
-              <div class="text-sm font-medium">CodeX Learning Hub</div>
-            </div>
-          </a>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href="mailto:sherbalochcs@gmail.com" class="px-5 py-3 rounded-2xl text-xs font-mono-code font-semibold text-white bg-gradient-to-r from-violet-600 to-cyan-600 shadow-lg flex items-center gap-2">
+              <i class="fa-solid fa-envelope"></i> sherbalochcs@gmail.com
+            </a>
+            <a href="tel:+923282342800" class="px-4 py-3 rounded-2xl text-xs font-mono-code font-semibold tech-pill flex items-center gap-2">
+              <i class="fa-solid fa-phone text-emerald-600"></i> +92 328 2342800
+            </a>
+            <a href="https://www.linkedin.com/in/sherkhanbaloch/" target="_blank" class="w-10 h-10 rounded-2xl tech-pill flex items-center justify-center text-cyan-600" title="LinkedIn">
+              <i class="fa-brands fa-linkedin text-base"></i>
+            </a>
+            <a href="https://github.com/sherkhanbaloch" target="_blank" class="w-10 h-10 rounded-2xl tech-pill flex items-center justify-center" title="GitHub">
+              <i class="fa-brands fa-github text-base"></i>
+            </a>
+            <a href="https://instagram.com/sherbalochcs" target="_blank" class="w-10 h-10 rounded-2xl tech-pill flex items-center justify-center" title="Instagram">
+              <i class="fa-brands fa-instagram text-base"></i>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -693,555 +467,415 @@
   </main>
 
   <!-- ================= INTERACTIVE 3D PROJECT ARCHITECTURE MODAL ================= -->
-  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md">
-    <div class="modal-surface rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-white/15 p-6 sm:p-8 relative animate-fadeIn">
-      <!-- Top Modal Bar -->
-      <div class="flex items-center justify-between gap-4 pb-5 border-b border-white/10">
-        <div class="flex items-center gap-2.5">
-          <span id="modal-tag" class="px-3 py-1 rounded-full text-xs font-mono-code bg-violet-600/20 text-violet-300 border border-violet-500/30"></span>
-          <span id="modal-arch-badge" class="px-3 py-1 rounded-full text-xs font-mono-code bg-cyan-600/20 text-cyan-300 border border-cyan-500/30"></span>
+  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/70 backdrop-blur-md">
+    <div class="modal-surface rounded-3xl max-w-3xl w-full max-h-[88vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative">
+      <div class="flex items-center justify-between gap-4 pb-4 border-b border-slate-500/15">
+        <div class="flex flex-wrap items-center gap-2">
+          <span id="modal-tag" class="px-3 py-1 rounded-full text-xs font-mono-code font-semibold bg-violet-500/15 text-violet-600"></span>
+          <span id="modal-arch-badge" class="px-3 py-1 rounded-full text-xs font-mono-code font-semibold bg-cyan-500/15 text-cyan-600"></span>
         </div>
-        <button onclick="closeProjectModal()" class="w-9 h-9 rounded-xl glass flex items-center justify-center hover:bg-rose-500/20 hover:text-rose-400 transition" title="Close (ESC)">
-          <i class="fa-solid fa-xmark text-lg"></i>
+        <button onclick="closeProjectModal()" class="w-9 h-9 rounded-full tech-pill flex items-center justify-center hover:text-rose-500">
+          <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- Modal Content Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 py-6">
-        <div class="lg:col-span-6 space-y-3">
-          <div class="relative rounded-2xl overflow-hidden border border-white/15 bg-slate-950 group">
-            <img id="modal-img" src="" alt="Project Preview" class="w-full h-64 sm:h-72 object-cover object-top" />
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 py-6 items-center">
+        <div class="md:col-span-6 space-y-2">
+          <div class="relative rounded-2xl overflow-hidden border border-slate-500/15 bg-slate-900">
+            <img id="modal-img" src="" alt="Preview" class="w-full h-56 object-cover object-top" />
             <a id="modal-zoom-link" href="" target="_blank"
-               class="keep-white absolute bottom-3 right-3 px-3 py-1.5 rounded-lg text-xs font-mono-code bg-black/75 hover:bg-violet-600 transition flex items-center gap-1.5">
-              <i class="fa-solid fa-expand"></i> Fullscreen Image
+               class="absolute bottom-2.5 right-2.5 px-3 py-1 rounded-lg text-[11px] font-mono-code bg-black/75 text-white hover:bg-violet-600 transition">
+              <i class="fa-solid fa-expand mr-1"></i>Full Image
             </a>
           </div>
-          <div class="flex items-center justify-between text-xs font-mono-code text-slate-400 px-1">
-            <span id="modal-counter">Project 1 of 24</span>
-            <span>Use ⬅ ➡ Arrow Keys to Navigate</span>
+          <div class="flex justify-between text-[11px] font-mono-code text-theme-muted px-1">
+            <span id="modal-counter"></span>
+            <span>⬅ ➡ Arrow Keys</span>
           </div>
         </div>
 
-        <div class="lg:col-span-6 space-y-5">
-          <h3 id="modal-title" class="text-2xl sm:text-3xl font-bold"></h3>
-          <p id="modal-desc" class="text-sm text-slate-300 leading-relaxed"></p>
+        <div class="md:col-span-6 space-y-4">
+          <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-theme-primary"></h3>
+          <p id="modal-desc" class="text-xs sm:text-sm text-theme-secondary leading-relaxed"></p>
 
           <div>
-            <h4 class="text-xs font-mono-code uppercase tracking-wider text-cyan-400 mb-2">
-              <i class="fa-solid fa-microchip mr-1"></i> Engineering & Architecture Highlights
-            </h4>
-            <ul id="modal-highlights" class="space-y-1.5 text-xs sm:text-sm text-slate-300"></ul>
+            <div class="text-[11px] font-mono-code uppercase text-violet-600 font-semibold mb-1.5">Key Architecture Highlights</div>
+            <ul id="modal-highlights" class="space-y-1 text-xs text-theme-secondary"></ul>
           </div>
 
-          <div>
-            <h4 class="text-xs font-mono-code uppercase tracking-wider text-violet-400 mb-2">
-              <i class="fa-solid fa-layer-group mr-1"></i> Tech Stack
-            </h4>
-            <div id="modal-stack" class="flex flex-wrap gap-1.5"></div>
-          </div>
+          <div id="modal-stack" class="flex flex-wrap gap-1.5 pt-1"></div>
         </div>
       </div>
 
-      <!-- Bottom Modal Navigation -->
-      <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/10">
-        <div class="flex items-center gap-2">
-          <button onclick="navigateModal(-1)" class="px-4 py-2 rounded-xl text-xs font-mono-code glass hover:border-violet-500/50 transition flex items-center gap-1.5">
-            <i class="fa-solid fa-arrow-left"></i> Prev
+      <div class="flex items-center justify-between pt-4 border-t border-slate-500/15">
+        <div class="flex gap-2">
+          <button onclick="navigateModal(-1)" class="px-3.5 py-2 rounded-xl text-xs font-mono-code tech-pill">
+            <i class="fa-solid fa-arrow-left mr-1"></i>Prev
           </button>
-          <button onclick="navigateModal(1)" class="px-4 py-2 rounded-xl text-xs font-mono-code glass hover:border-violet-500/50 transition flex items-center gap-1.5">
-            Next <i class="fa-solid fa-arrow-right"></i>
+          <button onclick="navigateModal(1)" class="px-3.5 py-2 rounded-xl text-xs font-mono-code tech-pill">
+            Next<i class="fa-solid fa-arrow-right ml-1"></i>
           </button>
         </div>
-
-        <div class="flex items-center gap-2.5">
-          <a id="modal-github-btn" href="https://github.com/sherkhanbaloch" target="_blank"
-             class="keep-white px-5 py-2.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-violet-600 to-cyan-500 hover:opacity-95 transition flex items-center gap-2">
-            <i class="fa-brands fa-github"></i> View on GitHub
-          </a>
-        </div>
+        <a id="modal-github-btn" href="https://github.com/sherkhanbaloch" target="_blank"
+           class="px-5 py-2 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-violet-600 to-cyan-600">
+          <i class="fa-brands fa-github mr-1.5"></i>GitHub Repo
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- ================= FLOATING SHERBOT AI RECRUITER ASSISTANT ================= -->
+  <!-- ================= FLOATING SHERBOT AI ASSISTANT ================= -->
   <div class="fixed bottom-5 right-5 z-40">
-    <!-- Chat Window -->
-    <div id="ai-chat-window" class="hidden mb-3 w-[350px] sm:w-[400px] modal-surface rounded-3xl shadow-2xl border border-white/15 overflow-hidden flex-col">
-      <!-- Header -->
-      <div class="keep-white bg-gradient-to-r from-violet-700 via-indigo-700 to-cyan-600 px-5 py-4 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center text-lg">
-            <i class="fa-solid fa-robot"></i>
-          </div>
+    <div id="ai-chat-window" class="hidden mb-3 w-[340px] sm:w-[380px] modal-surface rounded-3xl shadow-2xl overflow-hidden flex-col">
+      <div class="bg-gradient-to-r from-violet-600 to-cyan-600 px-5 py-3.5 flex items-center justify-between text-white">
+        <div class="flex items-center gap-2.5">
+          <i class="fa-solid fa-robot text-base"></i>
           <div>
-            <div class="font-bold text-sm flex items-center gap-1.5">
-              SherBot AI <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            </div>
-            <div class="text-[11px] opacity-85 font-mono-code">Trained on 2026 Resume & 24 Projects</div>
+            <div class="font-bold text-xs">SherBot AI Assistant</div>
+            <div class="text-[10px] opacity-85 font-mono-code">Instant Resume & Project Q&A</div>
           </div>
         </div>
-        <button onclick="toggleAIChat()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center">
-          <i class="fa-solid fa-chevron-down text-xs"></i>
+        <button onclick="toggleAIChat()" class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-xs"></i>
         </button>
       </div>
 
-      <!-- Quick Recruiter Chips -->
-      <div class="px-4 py-2.5 border-b border-white/10 flex items-center gap-1.5 overflow-x-auto text-[11px] font-mono-code">
-        <button onclick="askAI('Tell me about Sher Khan\'s current role at ICT Systems')" class="px-2.5 py-1 rounded-full glass hover:border-violet-400 shrink-0">💼 ICT Systems ERP</button>
-        <button onclick="askAI('How does ZAB Careers AI ATS and ZAB GPT work?')" class="px-2.5 py-1 rounded-full glass hover:border-cyan-400 shrink-0">🤖 ZAB Careers & ZAB GPT</button>
-        <button onclick="askAI('What is Sher Khan\'s SZABIST CGPA and achievements?')" class="px-2.5 py-1 rounded-full glass hover:border-emerald-400 shrink-0">🎓 3.63 CGPA & Devsinc</button>
-        <button onclick="askAI('How can I contact or hire Sher Khan?')" class="px-2.5 py-1 rounded-full glass hover:border-amber-400 shrink-0">📞 Contact Info</button>
+      <div class="px-3 py-2 border-b border-slate-500/10 flex gap-1.5 overflow-x-auto text-[11px] font-mono-code">
+        <button onclick="askAI('Current role at ICT Systems?')" class="px-2.5 py-1 rounded-full tech-pill shrink-0">💼 ICT Systems</button>
+        <button onclick="askAI('Tell me about ZAB Careers & ZAB GPT')" class="px-2.5 py-1 rounded-full tech-pill shrink-0">🤖 AI Projects</button>
+        <button onclick="askAI('SZABIST CGPA & Honours?')" class="px-2.5 py-1 rounded-full tech-pill shrink-0">🎓 3.63 CGPA</button>
       </div>
 
-      <!-- Messages Feed -->
-      <div id="ai-messages" class="p-4 h-72 overflow-y-auto space-y-3 text-xs sm:text-sm">
-        <div class="glass rounded-2xl rounded-tl-sm p-3.5 text-slate-200 leading-relaxed">
-          Hi! I'm <strong>SherBot AI</strong>, trained on Sher Khan's latest resume. Ask me about his current role at <strong>ICT Systems Pvt Ltd (WebDesk Easy ERP)</strong>, his <strong>3.63 CGPA at SZABIST</strong>, <strong>ZAB Careers (Mistral AI)</strong>, <strong>ZAB GPT (RAG)</strong>, or any of his <strong>24 software projects</strong>!
+      <div id="ai-messages" class="p-4 h-64 overflow-y-auto space-y-2.5 text-xs">
+        <div class="tech-pill rounded-2xl rounded-tl-sm p-3 leading-relaxed">
+          Hi! Ask me anything about Sher Khan's work at <strong>ICT Systems (WebDesk Easy ERP)</strong>, <strong>ZAB Careers (Mistral AI)</strong>, <strong>ZAB GPT (RAG)</strong>, or his <strong>3.63 CGPA at SZABIST</strong>.
         </div>
       </div>
 
-      <!-- Input Box -->
-      <form onsubmit="handleChatSubmit(event)" class="p-3 border-t border-white/10 flex items-center gap-2">
-        <input id="ai-input" type="text" placeholder="Ask about .NET, ERP, ZAB GPT, CGPA..."
-               class="w-full px-3.5 py-2.5 rounded-xl glass text-xs sm:text-sm focus:outline-none focus:border-violet-500" />
-        <button type="submit" class="keep-white px-4 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 font-semibold text-xs shrink-0">
+      <form onsubmit="handleChatSubmit(event)" class="p-2.5 border-t border-slate-500/10 flex gap-2">
+        <input id="ai-input" type="text" placeholder="Ask a question..."
+               class="w-full px-3 py-2 rounded-xl tech-pill text-xs focus:outline-none" />
+        <button type="submit" class="px-3.5 py-2 rounded-xl bg-violet-600 text-white text-xs">
           <i class="fa-solid fa-paper-plane"></i>
         </button>
       </form>
     </div>
 
-    <!-- Floating Trigger Button -->
     <button onclick="toggleAIChat()"
-            class="keep-white group px-5 py-3.5 rounded-full bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 shadow-2xl shadow-violet-600/40 hover:scale-105 transition flex items-center gap-3">
-      <span class="relative flex h-3 w-3">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
-      </span>
-      <i class="fa-solid fa-robot text-base"></i>
-      <span class="text-xs font-mono-code font-semibold tracking-wide">Ask Sher's AI • Resume Bot</span>
+            class="px-4 py-3 rounded-full text-white bg-gradient-to-r from-violet-600 to-cyan-600 shadow-xl shadow-violet-600/30 hover:scale-105 transition flex items-center gap-2.5">
+      <span class="w-2 h-2 rounded-full bg-emerald-300 animate-ping"></span>
+      <i class="fa-solid fa-robot text-sm"></i>
+      <span class="text-xs font-mono-code font-semibold">Ask AI</span>
     </button>
   </div>
 
-  <!-- Footer -->
-  <footer class="relative z-10 border-t border-white/10 glass-nav py-8 px-6">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-      <p>© <span id="year"></span> | <strong>Sher Khan Baloch</strong> — Software Engineer | .NET Developer</p>
-      <ul class="flex flex-wrap items-center gap-5">
-        <li><a href="#home-section" class="hover:text-violet-400 transition">Home</a></li>
-        <li><a href="#about-section" class="hover:text-violet-400 transition">About</a></li>
-        <li><a href="#experience-section" class="hover:text-violet-400 transition">Experience</a></li>
-        <li><a href="#portfolio-section" class="hover:text-violet-400 transition">Projects</a></li>
-        <li><a href="#contact-section" class="hover:text-violet-400 transition">Contact</a></li>
-      </ul>
-    </div>
+  <!-- Minimal Footer -->
+  <footer class="relative z-10 border-t border-slate-500/10 py-6 px-6 text-center text-xs text-theme-muted">
+    © <span id="year"></span> Sher Khan Baloch • All rights reserved
   </footer>
 
-  <!-- ================= SCRIPTS: DATA, MODAL, AI BOT, & 3D ENGINE ================= -->
+  <!-- ================= SCRIPTS: DATA, 3D ENGINE & UI ================= -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 1. Typewriter Effect (Updated with Latest Resume Stack)
+    // 1. Concise Typewriter
     const roles = [
-      "WebDesk Easy ERP SaaS (ASP.NET Core MVC).",
-      "ZAB Careers AI ATS (Angular + Mistral AI).",
-      "ZAB GPT Custom RAG (Docker + AnythingLLM).",
-      "Real-Time Geofencing Apps (EF Core + SignalR).",
-      "Enterprise ERPs (Dapper, RDLC & Crystal Reports)."
+      "Enterprise Web & ERP SaaS",
+      "AI, LLM & RAG Solutions",
+      "Desktop & POS Suites",
+      "System Design & Architecture",
+      "Software Consulting & Mentorship",
     ];
-    let roleIdx = 0, charIdx = 0, deleting = false;
+    let rIdx = 0, cIdx = 0, isDel = false;
     const typeEl = document.getElementById('typewriter');
-
     function typeLoop() {
-      const current = roles[roleIdx];
-      typeEl.textContent = current.substring(0, charIdx);
-      if (!deleting && charIdx < current.length) {
-        charIdx++;
-        setTimeout(typeLoop, 60);
-      } else if (deleting && charIdx > 0) {
-        charIdx--;
-        setTimeout(typeLoop, 30);
-      } else {
-        deleting = !deleting;
-        if (!deleting) roleIdx = (roleIdx + 1) % roles.length;
-        setTimeout(typeLoop, deleting ? 1500 : 280);
+      const curr = roles[rIdx];
+      typeEl.textContent = curr.substring(0, cIdx);
+      if (!isDel && cIdx < curr.length) { cIdx++; setTimeout(typeLoop, 55); }
+      else if (isDel && cIdx > 0) { cIdx--; setTimeout(typeLoop, 28); }
+      else {
+        isDel = !isDel;
+        if (!isDel) rIdx = (rIdx + 1) % roles.length;
+        setTimeout(typeLoop, isDel ? 1400 : 250);
       }
     }
     typeLoop();
 
-    // 2. All 24 Projects (Enriched with Exact Resume Details + ZAB GPT)
-    const BASE_URL = "";
+    // 2. All 24 Projects (6 Flagship marked `featured: true` for clean default view)
+    const BASE_URL = "https://sherkhanbaloch.github.io/Portfolio/";
     const projects = [
       {
-        id: 0,
-        title: "ZAB Careers (FYP): AI Recruitment & ATS System",
-        category: "netcore",
-        tag: "Angular + .NET Core + Mistral AI",
-        arch: "REST Web API + JWT + LLM ATS",
+        id: 0, featured: true, category: "netcore",
+        title: "ZAB Careers (FYP): AI Recruitment & ATS",
+        tag: "Angular + .NET Core + Mistral AI", arch: "JWT + Mistral AI Resume Parser",
         img: BASE_URL + "img/NETCore/ZAB-Careers.png",
-        desc: "Developed an AI-powered Recruitment and Applicant Tracking System (ATS) for SZABIST University supporting the complete end-to-end recruitment and hiring pipeline.",
+        desc: "End-to-end AI Recruitment and Applicant Tracking System built for SZABIST University.",
         highlights: [
-          "Integrated Mistral AI model for automated resume parsing, skill extraction, and candidate-job matching.",
-          "Implemented stateless JWT Authentication, BCrypt password hashing, and automated SMTP email workflows.",
-          "Built decoupled Angular SPA frontend communicating with an ASP.NET Core Web API & SQL Server backend."
+          "Mistral AI integration for automated resume analysis & candidate ranking.",
+          "JWT authentication, BCrypt password hashing, and automated SMTP emails.",
+          "Angular SPA frontend with ASP.NET Core Web API & SQL Server."
         ],
-        stack: ["Angular", "ASP.NET Core Web API", "Mistral AI", "SQL Server", "EF Core", "JWT Auth", "BCrypt", "SMTP"]
+        stack: ["Angular", "ASP.NET Core API", "Mistral AI", "SQL Server", "JWT", "BCrypt"]
       },
       {
-        id: 1,
-        title: "ZAB GPT: Custom University RAG AI Assistant",
-        category: "netcore",
-        tag: "Docker + AnythingLLM + RAG",
-        arch: "Containerized RAG Pipeline",
+        id: 1, featured: true, category: "netcore",
+        title: "ZAB GPT: University RAG AI Assistant",
+        tag: "Docker + AnythingLLM + RAG", arch: "Containerized RAG Pipeline",
         img: BASE_URL + "img/WebForms/CodeX.png",
-        desc: "Built a custom GPT AI assistant tailored for university career and job-related queries using Retrieval-Augmented Generation (RAG) over organizational datasets.",
+        desc: "Custom RAG GPT assistant answering university career and placement queries from internal documents.",
         highlights: [
-          "Engineered a RAG pipeline ingesting custom PDF, DOCX, and Markdown university career documents.",
-          "Orchestrated with Docker, AnythingLLM, and OpenRouter for grounded, low-hallucination contextual responses.",
-          "Designed for SZABIST students and career services to query job policies and placement guidance."
+          "Ingests custom PDF, DOCX, and Markdown organizational datasets.",
+          "Deployed with Docker, AnythingLLM, and OpenRouter for grounded responses."
         ],
-        stack: ["Docker", "AnythingLLM", "OpenRouter", "RAG Architecture", "Vector Embeddings", "Linux"]
+        stack: ["Docker", "AnythingLLM", "OpenRouter", "RAG", "Vector DB"]
       },
       {
-        id: 2,
+        id: 2, featured: true, category: "netcore",
         title: "Real-Time Geofencing Attendance App",
-        category: "netcore",
-        tag: "ASP.NET Core MVC + SignalR",
-        arch: "Haversine GPS + Real-Time Hub",
+        tag: "ASP.NET Core MVC + SignalR", arch: "Haversine GPS + Live SignalR",
         img: BASE_URL + "img/NETCore/GeoFenceAttendanceSystem.png",
-        desc: "Developed a GPS-based attendance application with Haversine-based geofencing, GPS accuracy validation, Check-In/Check-Out, working-hours calculation, and SignalR live updates.",
+        desc: "GPS-validated attendance platform with Haversine perimeter checks and live SignalR HR dashboards.",
         highlights: [
-          "Implemented Haversine mathematical formula to verify employee coordinates against virtual campus/office perimeters.",
-          "Enforced GPS accuracy validation and automated daily working-hours calculation.",
-          "Pushed instant Check-In/Check-Out telemetry to HR dashboards via ASP.NET Core SignalR WebSockets."
+          "Haversine formula geofencing & GPS accuracy validation.",
+          "Automated working-hours calculation and instant SignalR Check-In/Out updates."
         ],
-        stack: ["ASP.NET Core MVC", "EF Core", "SignalR", "Haversine Geofencing", "SQL Server", "JavaScript Geolocation"]
+        stack: ["ASP.NET Core MVC", "EF Core", "SignalR", "Haversine GPS", "SQL Server"]
       },
       {
-        id: 3,
-        title: "Financial Tracker Using Repository Pattern",
-        category: "netcore",
-        tag: ".NET Core + EF Core",
-        arch: "Generic Repository + Unit of Work",
-        img: BASE_URL + "img/NETCore/FinancialTracker.png",
-        desc: "Enterprise-grade personal and business financial ledger architected with clean separation of concerns using the Repository Pattern and Entity Framework Core.",
-        highlights: [
-          "Decoupled domain logic from EF Core persistence using Generic Repository & Dependency Injection.",
-          "Interactive income vs. expense analytics, category budgeting, and transactional audit trails."
-        ],
-        stack: ["ASP.NET Core MVC", "Entity Framework Core", "Repository Pattern", "SQL Server", "C#"]
-      },
-      {
-        id: 4,
-        title: "SignalR Real-Time Chat Application",
-        category: "netcore",
-        tag: ".NET Core + SignalR",
-        arch: "Event-Driven WebSocket Hubs",
-        img: BASE_URL + "img/NETCore/SignalR.png",
-        desc: "Low-latency bi-directional messaging platform powered by ASP.NET Core SignalR hubs with instant presence tracking and room broadcasting.",
-        highlights: [
-          "Persistent WebSocket connections with automatic fallback and reconnection policies.",
-          "Real-time typing indicators, online user lists, and instant group message delivery."
-        ],
-        stack: ["ASP.NET Core", "SignalR", "C#", "JavaScript", "HTML5/CSS3"]
-      },
-      {
-        id: 5,
-        title: "Business Management System (Commercial Web ERP)",
-        category: "webforms",
-        tag: "ASP.NET WebForms + Crystal Reports",
-        arch: "Multi-User Role-Based ERP",
+        id: 3, featured: true, category: "webforms",
+        title: "Business Management System (Commercial ERP)",
+        tag: "ASP.NET WebForms + Crystal Reports", arch: "Multi-User Role-Based ERP",
         img: BASE_URL + "img/WebForms/Business-Management-System.png",
-        desc: "Developed and sold a full ERP system to local businesses for managing accounting, inventory, sales, purchasing, HR management, and financial reporting.",
+        desc: "Commercially sold ERP system managing accounting, inventory, sales, purchasing, and HR.",
         highlights: [
-          "Commercially deployed ERP supporting multi-user concurrency and granular role-based access control (RBAC).",
-          "Complete financial accounting ledger, stock procurement, invoicing, and payroll modules.",
-          "Integrated SAP Crystal Reports for printable financial statements, balance sheets, and tax invoices."
+          "Multi-user role-based access control (RBAC) for small-to-medium enterprises.",
+          "Full financial reporting powered by SAP Crystal Reports & SQL Server."
         ],
-        stack: ["ASP.NET Web Forms", "C#", "SQL Server", "SAP Crystal Reports", "ADO.NET", "Bootstrap"]
+        stack: ["ASP.NET WebForms", "C#", "SQL Server", "Crystal Reports"]
       },
       {
-        id: 6,
+        id: 4, featured: true, category: "winforms",
+        title: "Point of Sale (POS) Retail Terminal",
+        tag: "C# WinForms + Barcode POS", arch: "Super Mart & Restaurant POS",
+        img: BASE_URL + "img/WinForms/Point-of-Sale.png",
+        desc: "High-speed barcode POS and thermal billing system deployed in local super marts and restaurants.",
+        highlights: [
+          "Instant barcode scanning, inventory deduction, and thermal receipt printing.",
+          "Daily Z-reports and shift cash reconciliation."
+        ],
+        stack: ["C#", "WinForms", "SQL Server", "Crystal Reports"]
+      },
+      {
+        id: 5, featured: true, category: "netcore",
+        title: "Financial Tracker (Repository Pattern)",
+        tag: ".NET Core + EF Core", arch: "Generic Repository Architecture",
+        img: BASE_URL + "img/NETCore/FinancialTracker.png",
+        desc: "Clean-architecture financial ledger using Generic Repository Pattern and Entity Framework Core.",
+        highlights: [
+          "Decoupled data access layer with EF Core and Dependency Injection.",
+          "Income/expense analytics and category budget auditing."
+        ],
+        stack: ["ASP.NET Core", "EF Core", "Repository Pattern", "SQL Server"]
+      },
+      {
+        id: 6, featured: false, category: "netcore",
+        title: "SignalR Real-Time Chat App",
+        tag: ".NET Core + SignalR", arch: "Bi-Directional WebSockets",
+        img: BASE_URL + "img/NETCore/SignalR.png",
+        desc: "Instant messaging and room broadcasting web app using ASP.NET Core SignalR hubs.",
+        highlights: ["Real-time presence, typing indicators, and instant group messaging."],
+        stack: ["ASP.NET Core", "SignalR", "C#", "JavaScript"]
+      },
+      {
+        id: 7, featured: false, category: "webforms",
         title: "Calculator World Suite",
-        category: "webforms",
-        tag: "ASP.NET WebForms",
-        arch: "Modular Web Utility",
+        tag: "ASP.NET WebForms", arch: "Modular Web Utility",
         img: BASE_URL + "img/WebForms/Calculator-World.png",
-        desc: "Multi-disciplinary financial, scientific, and unit conversion web calculator suite built on ASP.NET WebForms.",
-        highlights: [
-          "Server-side precision evaluation and instant postback state management.",
-          "Clean responsive UI for academic and financial calculations."
-        ],
-        stack: ["ASP.NET Web Forms", "C#", "HTML/CSS", "JavaScript"]
+        desc: "Scientific, financial, and unit conversion calculator portal.",
+        highlights: ["Fast server-side calculation modules with responsive layout."],
+        stack: ["ASP.NET WebForms", "C#", "JavaScript"]
       },
       {
-        id: 7,
+        id: 8, featured: false, category: "webforms",
         title: "Expenses Management System (Web)",
-        category: "webforms",
-        tag: "ASP.NET WebForms + SQL",
-        arch: "N-Tier Financial Tracker",
+        tag: "ASP.NET WebForms", arch: "Corporate Expense Ledger",
         img: BASE_URL + "img/WebForms/Expenses-Management-System.png",
-        desc: "Web-based corporate expense voucher and departmental cost tracking application backed by SQL Server.",
-        highlights: [
-          "Multi-category expense logging, approval workflows, and monthly burn-rate summaries.",
-          "Parameterized ADO.NET queries and stored procedures for fast reporting."
-        ],
-        stack: ["ASP.NET Web Forms", "C#", "SQL Server", "ADO.NET"]
+        desc: "Departmental expense voucher and monthly budget tracking web application.",
+        highlights: ["Multi-category cost logging and SQL Server summary reports."],
+        stack: ["ASP.NET WebForms", "C#", "SQL Server"]
       },
       {
-        id: 8,
-        title: "Automated Marks Sheet Generator",
-        category: "webforms",
-        tag: "ASP.NET WebForms",
-        arch: "Academic Grading Engine",
+        id: 9, featured: false, category: "webforms",
+        title: "Marks Sheet Generator",
+        tag: "ASP.NET WebForms", arch: "Academic Grading Automation",
         img: BASE_URL + "img/WebForms/Marks-Sheet-Generator.png",
-        desc: "Academic transcript and grade-point average (GPA) automation utility for educational institutions.",
-        highlights: [
-          "Automated percentage, grade letter, and CGPA computation with printable transcript layouts.",
-          "Batch student mark validation and export support."
-        ],
-        stack: ["ASP.NET Web Forms", "C#", "SQL Server"]
+        desc: "Automated student GPA, grade letter, and printable transcript generator.",
+        highlights: ["Batch grading calculation and transcript export."],
+        stack: ["ASP.NET WebForms", "C#", "SQL Server"]
       },
       {
-        id: 9,
+        id: 10, featured: false, category: "webforms",
         title: "Online Food Ordering Platform",
-        category: "webforms",
-        tag: "ASP.NET WebForms + SQL",
-        arch: "E-Commerce Cart & Order Pipeline",
+        tag: "ASP.NET WebForms", arch: "E-Commerce Cart & Kitchen Queue",
         img: BASE_URL + "img/WebForms/Online-Food-Ordering.png",
-        desc: "Full-featured restaurant ordering portal with dynamic menu management, session cart, and kitchen order tracking.",
-        highlights: [
-          "Customer menu browsing, cart state management, and order status lifecycle.",
-          "Admin dashboard for managing dishes, pricing, and fulfillment."
-        ],
-        stack: ["ASP.NET Web Forms", "C#", "SQL Server", "Bootstrap"]
+        desc: "Restaurant ordering web portal with dynamic menu and order lifecycle tracking.",
+        highlights: ["Interactive cart session state and admin menu control."],
+        stack: ["ASP.NET WebForms", "C#", "SQL Server", "Bootstrap"]
       },
       {
-        id: 10,
+        id: 11, featured: false, category: "webforms",
         title: "Online Job Portal",
-        category: "webforms",
-        tag: "ASP.NET WebForms",
-        arch: "Role-Based Recruitment Portal",
+        tag: "ASP.NET WebForms", arch: "Multi-Role Recruitment Board",
         img: BASE_URL + "img/WebForms/Online-Job-Portal.png",
-        desc: "Multi-role job board connecting employers and job seekers with resume uploads and application tracking.",
-        highlights: [
-          "Employer vacancy publishing, applicant filtering, and candidate profile dashboards.",
-          "Relational SQL Server schema for job categories and application states."
-        ],
-        stack: ["ASP.NET Web Forms", "C#", "SQL Server", "ADO.NET"]
+        desc: "Job board connecting employers and applicants with resume uploads.",
+        highlights: ["Role-based employer vacancy posting and candidate tracking."],
+        stack: ["ASP.NET WebForms", "C#", "SQL Server"]
       },
       {
-        id: 11,
-        title: "Paragraph Master Text Analyzer",
-        category: "webforms",
-        tag: "ASP.NET WebForms",
-        arch: "String Processing Utility",
+        id: 12, featured: false, category: "webforms",
+        title: "Paragraph Master Analyzer",
+        tag: "ASP.NET WebForms", arch: "Text Analytics Utility",
         img: BASE_URL + "img/WebForms/Paragraph-Master.png",
-        desc: "Text analytics and formatting web tool for word frequency, character metrics, and lexical transformation.",
-        highlights: [
-          "Real-time word/sentence counting, case conversion, and readability statistics."
-        ],
-        stack: ["ASP.NET Web Forms", "C#", "JavaScript"]
+        desc: "Lexical counter, case converter, and readability analyzer.",
+        highlights: ["Instant word frequency and character telemetry."],
+        stack: ["ASP.NET WebForms", "C#", "JavaScript"]
       },
       {
-        id: 12,
-        title: "Interactive Quiz Game Platform",
-        category: "webforms",
-        tag: "ASP.NET WebForms",
-        arch: "Timed Assessment Engine",
+        id: 13, featured: false, category: "webforms",
+        title: "Quiz Game Assessment Engine",
+        tag: "ASP.NET WebForms", arch: "Timed MCQ Platform",
         img: BASE_URL + "img/WebForms/Quiz-Game.png",
-        desc: "Dynamic MCQ assessment and trivia engine with randomized question banks and automated scoring.",
-        highlights: [
-          "Session-tracked timers, instant scorecard generation, and topic selection."
-        ],
-        stack: ["ASP.NET Web Forms", "C#", "SQL Server"]
+        desc: "Timed trivia and academic quiz engine with automated scorecard generation.",
+        highlights: ["Randomized question bank and session timer tracking."],
+        stack: ["ASP.NET WebForms", "C#", "SQL Server"]
       },
       {
-        id: 13,
+        id: 14, featured: false, category: "webforms",
         title: "CodeX Developer Learning Hub",
-        category: "webforms",
-        tag: "Educational Platform",
-        arch: "Static Docs & Resource Portal",
+        tag: "Docs & Cheatsheets", arch: "Educational Knowledge Base",
         img: BASE_URL + "img/WebForms/CodeX.png",
         link: "https://sherkhanbaloch.github.io/CodeX/",
-        desc: "Open-access educational portal hosting Sher Khan's handwritten programming notes, cheatsheets, and study material for CS students.",
-        highlights: [
-          "Curated C#, .NET, SQL Server, and Computer Science study guides and code snippets.",
-          "Widely used by university peers for quick technical revision."
-        ],
-        stack: ["HTML5", "CSS3", "JavaScript", "GitHub Pages", "Markdown"]
+        desc: "Open-access portal featuring Sher Khan's handwritten CS notes and cheatsheets.",
+        highlights: ["Curated C#, .NET, and SQL Server reference material."],
+        stack: ["HTML5", "CSS3", "JavaScript", "GitHub Pages"]
       },
       {
-        id: 14,
+        id: 15, featured: false, category: "winforms",
         title: "Academy Management System",
-        category: "winforms",
-        tag: "C# WinForms + Crystal Reports",
-        arch: "Desktop ERP for Coaching Centers",
+        tag: "C# WinForms + Crystal Reports", arch: "Coaching Center ERP",
         img: BASE_URL + "img/WinForms/Academy-Management-System.png",
-        desc: "Commercial desktop suite built for local academies to manage student enrollments, batch scheduling, fee vouchers, and tutor payroll.",
-        highlights: [
-          "Automated monthly fee defaulters list and barcode fee receipt printing via SAP Crystal Reports.",
-          "Role-based desktop login for receptionists and administrators."
-        ],
-        stack: ["C#", "WinForms", "SQL Server", "SAP Crystal Reports", "ADO.NET"]
+        desc: "Desktop ERP for academies handling enrollments, fee vouchers, and tutor payroll.",
+        highlights: ["Automated fee defaulters tracking and Crystal Reports receipts."],
+        stack: ["C#", "WinForms", "SQL Server", "Crystal Reports"]
       },
       {
-        id: 15,
-        title: "Business Management System (Desktop ERP)",
-        category: "winforms",
-        tag: "C# WinForms + SQL Server",
-        arch: "Client-Server Desktop ERP",
+        id: 16, featured: false, category: "winforms",
+        title: "Business Management System (Desktop)",
+        tag: "C# WinForms", arch: "Client-Server Desktop ERP",
         img: BASE_URL + "img/WinForms/Business-Management-System.png",
-        desc: "Full-scale Windows desktop ERP deployed for local trading and distribution businesses covering inventory, ledgers, and invoicing.",
-        highlights: [
-          "ACID-compliant SQL Server transactions for purchase orders, sales returns, and party ledgers.",
-          "Comprehensive financial reporting with Crystal Reports."
-        ],
-        stack: ["C#", "WinForms", "SQL Server", "SAP Crystal Reports"]
+        desc: "Windows desktop ERP for wholesale distribution, ledgers, and stock control.",
+        highlights: ["ACID SQL Server transactions and party ledger statements."],
+        stack: ["C#", "WinForms", "SQL Server", "Crystal Reports"]
       },
       {
-        id: 16,
+        id: 17, featured: false, category: "winforms",
         title: "Exam Management System",
-        category: "winforms",
-        tag: "C# WinForms",
-        arch: "Desktop Examination Suite",
+        tag: "C# WinForms", arch: "Institutional Exam Suite",
         img: BASE_URL + "img/WinForms/Exam-Management-System.png",
-        desc: "Examination seating, roll-number slip generation, and result tabulation software for educational institutes.",
-        highlights: [
-          "Automated hall allocation, printable admit cards, and consolidated gazette reports."
-        ],
-        stack: ["C#", "WinForms", "SQL Server", "SAP Crystal Reports"]
+        desc: "Seating plan, admit card, and result gazette automation software.",
+        highlights: ["Printable roll-number slips and consolidated result sheets."],
+        stack: ["C#", "WinForms", "SQL Server", "Crystal Reports"]
       },
       {
-        id: 17,
+        id: 18, featured: false, category: "winforms",
         title: "Expenses Management System (Desktop)",
-        category: "winforms",
-        tag: "C# WinForms",
-        arch: "Desktop Accounting Ledger",
+        tag: "C# WinForms", arch: "Petty Cash Ledger",
         img: BASE_URL + "img/WinForms/Expenses-Management-System.png",
-        desc: "Petty cash and daily operational expense tracking desktop software for small-to-medium enterprises.",
-        highlights: [
-          "Date-range filtering, category-wise expense charts, and exportable audit sheets."
-        ],
-        stack: ["C#", "WinForms", "SQL Server", "ADO.NET"]
+        desc: "Daily business expense and petty cash auditing desktop application.",
+        highlights: ["Date-range filtering and printable expense summaries."],
+        stack: ["C#", "WinForms", "SQL Server"]
       },
       {
-        id: 18,
-        title: "Enterprise Billing & Invoicing Software",
-        category: "winforms",
-        tag: "C# WinForms + Crystal Reports",
-        arch: "High-Speed Thermal & A4 Invoicing",
+        id: 19, featured: false, category: "winforms",
+        title: "Enterprise Billing Software",
+        tag: "C# WinForms + Crystal", arch: "High-Speed Counter Invoicing",
         img: BASE_URL + "img/WinForms/Invoice-Screen.png",
-        desc: "Fast keyboard-driven billing software engineered for retail counters and wholesale distributors.",
-        highlights: [
-          "Instant discount, tax, and net-payable calculations with direct thermal/A4 invoice printing.",
-          "Real-time stock deduction upon invoice finalization."
-        ],
-        stack: ["C#", "WinForms", "SQL Server", "SAP Crystal Reports"]
+        desc: "Keyboard-driven retail & wholesale invoicing software with tax & discount calculation.",
+        highlights: ["Instant thermal and A4 invoice generation via Crystal Reports."],
+        stack: ["C#", "WinForms", "SQL Server", "Crystal Reports"]
       },
       {
-        id: 19,
-        title: "Point of Sale (POS) Terminal",
-        category: "winforms",
-        tag: "C# WinForms + Barcode POS",
-        arch: "Retail Super Mart & Restaurant POS",
-        img: BASE_URL + "img/WinForms/Point-of-Sale.png",
-        desc: "Commercial Point of Sale system deployed across local super marts and restaurants with barcode scanner and thermal receipt integration.",
-        highlights: [
-          "Sub-second barcode lookup, shift cash drawer reconciliation, and low-stock alerts.",
-          "Daily Z-reports, profit-margin analytics, and cashier role permissions."
-        ],
-        stack: ["C#", "WinForms", "SQL Server", "SAP Crystal Reports", "Barcode Hardware API"]
-      },
-      {
-        id: 20,
-        title: "Real-Time File System Monitor App",
-        category: "winforms",
-        tag: "C# WinForms + IO Watcher",
-        arch: "Windows FileSystemWatcher Service",
+        id: 20, featured: false, category: "winforms",
+        title: "File System Monitor App",
+        tag: "C# WinForms + System.IO", arch: "OS Directory Watcher",
         img: BASE_URL + "img/WinForms/File-Monitor-App.jpg",
-        desc: "System utility that hooks into Windows OS directory events to log file creation, modification, renaming, and deletion in real time.",
-        highlights: [
-          "Powered by .NET FileSystemWatcher with multi-threaded UI event marshaling and audit log export."
-        ],
-        stack: ["C#", "WinForms", "System.IO", "Windows API"]
+        desc: "Real-time Windows directory monitor logging file creation, edits, and deletions.",
+        highlights: ["Built with .NET FileSystemWatcher and asynchronous event logs."],
+        stack: ["C#", "WinForms", "System.IO"]
       },
       {
-        id: 21,
+        id: 21, featured: false, category: "winforms",
         title: "School Management System",
-        category: "winforms",
-        tag: "C# WinForms + Crystal Reports",
-        arch: "Complete K-12 Institutional ERP",
+        tag: "C# WinForms + Crystal Reports", arch: "K-12 Institutional ERP",
         img: BASE_URL + "img/WinForms/School-Management-System.png",
-        desc: "End-to-end desktop ERP built for local schools managing admissions, attendance, fee challans, timetables, and report cards.",
-        highlights: [
-          "Automated family fee challan generation, arrears tracking, and term result cards via Crystal Reports."
-        ],
-        stack: ["C#", "WinForms", "SQL Server", "SAP Crystal Reports"]
+        desc: "Complete school ERP covering admissions, fee challans, attendance, and report cards.",
+        highlights: ["Automated monthly fee challans and term result cards."],
+        stack: ["C#", "WinForms", "SQL Server", "Crystal Reports"]
       },
       {
-        id: 22,
-        title: "Sindhi-Urdu Regional Language Software",
-        category: "winforms",
-        tag: "C# WinForms + Unicode",
-        arch: "Right-to-Left (RTL) Localization Suite",
+        id: 22, featured: false, category: "winforms",
+        title: "Sindhi-Urdu Language Software",
+        tag: "C# WinForms + Unicode", arch: "RTL Phonetic Suite",
         img: BASE_URL + "img/WinForms/Sindhi-Software.png",
-        desc: "Specialized regional-language desktop application featuring full Unicode Right-to-Left (RTL) phonetic keyboard mapping for Sindhi and Urdu.",
-        highlights: [
-          "Custom RTL typography rendering, localized UI controls, and Unicode document export."
-        ],
-        stack: ["C#", "WinForms", "Unicode RTL", ".NET Globalization"]
+        desc: "Right-to-Left (RTL) Unicode phonetic editor for Sindhi and Urdu.",
+        highlights: ["Custom RTL keyboard mapping and localized typography."],
+        stack: ["C#", "WinForms", "Unicode RTL"]
       },
       {
-        id: 23,
-        title: "Webcam Capture & Vision Utility (AForge.NET)",
-        category: "winforms",
-        tag: "WinForms + AForge.NET",
-        arch: "DirectShow Hardware Video Pipeline",
+        id: 23, featured: false, category: "winforms",
+        title: "Webcam Capture Utility (AForge.NET)",
+        tag: "WinForms + AForge.NET", arch: "DirectShow Hardware Vision",
         img: BASE_URL + "img/WinForms/AForgeNET.png",
-        desc: "Hardware-accelerated webcam streaming and snapshot capture desktop utility built with the AForge.NET computer vision framework.",
-        highlights: [
-          "Real-time frame rendering, resolution switching, and instant ID photo capture for ERP registration modules."
-        ],
-        stack: ["C#", "WinForms", "AForge.NET", "DirectShow"]
+        desc: "Live webcam streaming and ID snapshot utility using AForge.NET.",
+        highlights: ["Hardware-accelerated video capture for ERP student/staff registration."],
+        stack: ["C#", "WinForms", "AForge.NET"]
       }
     ];
 
-    let currentFilteredProjects = [...projects];
-    let currentModalIndex = 0;
+    let currentFiltered = [];
+    let currentModalIdx = 0;
     const gridEl = document.getElementById('portfolio-grid');
 
-    function renderProjects(filter = 'all') {
+    function renderProjects(filter = 'featured') {
       gridEl.innerHTML = '';
-      currentFilteredProjects = filter === 'all' ? projects : projects.filter(p => p.category === filter);
+      if (filter === 'featured') currentFiltered = projects.filter(p => p.featured);
+      else if (filter === 'all') currentFiltered = [...projects];
+      else currentFiltered = projects.filter(p => p.category === filter);
 
-      currentFilteredProjects.forEach((proj, idx) => {
+      currentFiltered.forEach((proj, idx) => {
         const card = document.createElement('div');
-        card.className = "tilt-card glass rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group cursor-pointer";
+        card.className = "tilt-card glass rounded-3xl overflow-hidden flex flex-col justify-between group cursor-pointer";
         card.onclick = () => openProjectModal(idx);
         card.innerHTML = `
           <div>
-            <div class="relative h-52 overflow-hidden bg-slate-900">
+            <div class="relative h-48 overflow-hidden bg-slate-900">
               <img src="${proj.img}" alt="${proj.title}" loading="lazy"
-                   class="w-full h-full object-cover object-top group-hover:scale-110 transition duration-500" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-              <span class="keep-white absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-mono-code bg-black/75 backdrop-blur-md text-cyan-300 border border-white/15">
+                   class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-mono-code font-semibold bg-white/90 text-slate-900 shadow">
                 ${proj.tag}
               </span>
-              <span class="keep-white absolute bottom-3 right-3 px-2.5 py-1 rounded-lg text-[10px] font-mono-code bg-violet-600/90 text-white opacity-0 group-hover:opacity-100 transition">
-                <i class="fa-solid fa-diagram-project mr-1"></i>View Architecture
-              </span>
             </div>
-            <div class="p-5 space-y-2">
-              <div class="text-[11px] font-mono-code text-violet-400">${proj.arch}</div>
-              <h3 class="font-bold text-lg text-white group-hover:text-cyan-400 transition line-clamp-1">${proj.title}</h3>
-              <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${proj.desc}</p>
+            <div class="p-5 space-y-1.5">
+              <div class="text-[11px] font-mono-code font-semibold text-violet-600">${proj.arch}</div>
+              <h3 class="font-bold text-base text-theme-primary group-hover:text-violet-600 transition line-clamp-1">${proj.title}</h3>
+              <p class="text-xs text-theme-muted line-clamp-2">${proj.desc}</p>
             </div>
           </div>
-          <div class="px-5 pb-4 pt-3 flex items-center justify-between text-xs text-slate-400 border-t border-white/5">
-            <span class="font-mono-code text-[11px]">${proj.stack.slice(0, 3).join(' • ')}</span>
-            <span class="text-cyan-400 font-semibold flex items-center gap-1">
-              <span>Inspect</span>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          <div class="px-5 pb-4 pt-2 flex items-center justify-between text-[11px] font-mono-code text-theme-muted border-t border-slate-500/10">
+            <span>${proj.stack.slice(0, 2).join(' • ')}</span>
+            <span class="text-violet-600 font-semibold group-hover:translate-x-1 transition inline-flex items-center gap-1">
+              Architecture <i class="fa-solid fa-arrow-right text-[10px]"></i>
             </span>
           </div>
         `;
@@ -1253,53 +887,38 @@
 
     function filterProjects(cat) {
       document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('bg-violet-600', 'text-white', 'keep-white');
-        btn.classList.add('glass', 'text-slate-300');
+        btn.className = "filter-btn px-4 py-2 rounded-full text-xs font-mono-code tech-pill transition";
       });
-      const activeBtn = document.getElementById('btn-' + cat);
-      activeBtn.classList.remove('glass', 'text-slate-300');
-      activeBtn.classList.add('bg-violet-600', 'text-white', 'keep-white');
+      const active = document.getElementById('btn-' + cat);
+      active.className = "filter-btn px-4 py-2 rounded-full text-xs font-mono-code font-semibold bg-violet-600 text-white shadow-md transition";
       renderProjects(cat);
     }
 
-    // 3. Project Architecture Modal Logic
+    // 3. Modal Logic
     const modalEl = document.getElementById('project-modal');
+    function openProjectModal(idx) {
+      currentModalIdx = idx;
+      const p = currentFiltered[currentModalIdx];
+      if (!p) return;
+      document.getElementById('modal-tag').textContent = p.tag;
+      document.getElementById('modal-arch-badge').textContent = p.arch;
+      document.getElementById('modal-img').src = p.img;
+      document.getElementById('modal-zoom-link').href = p.img;
+      document.getElementById('modal-title').textContent = p.title;
+      document.getElementById('modal-desc').textContent = p.desc;
+      document.getElementById('modal-counter').textContent = `${currentModalIdx + 1} / ${currentFiltered.length}`;
+      document.getElementById('modal-github-btn').href = p.link || "https://github.com/sherkhanbaloch";
 
-    function openProjectModal(indexInFiltered) {
-      currentModalIndex = indexInFiltered;
-      const proj = currentFilteredProjects[currentModalIndex];
-      if (!proj) return;
+      document.getElementById('modal-highlights').innerHTML = p.highlights.map(h =>
+        `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-1"></i><span>${h}</span></li>`
+      ).join('');
 
-      document.getElementById('modal-tag').textContent = proj.tag;
-      document.getElementById('modal-arch-badge').textContent = proj.arch;
-      document.getElementById('modal-img').src = proj.img;
-      document.getElementById('modal-zoom-link').href = proj.img;
-      document.getElementById('modal-title').textContent = proj.title;
-      document.getElementById('modal-desc').textContent = proj.desc;
-      document.getElementById('modal-counter').textContent = `Project ${currentModalIndex + 1} of ${currentFilteredProjects.length}`;
-      document.getElementById('modal-github-btn').href = proj.link || "https://github.com/sherkhanbaloch";
-
-      const highlightsEl = document.getElementById('modal-highlights');
-      highlightsEl.innerHTML = proj.highlights.map(h => `
-        <li class="flex items-start gap-2">
-          <i class="fa-solid fa-check text-emerald-400 mt-1 text-xs"></i>
-          <span>${h}</span>
-        </li>
-      `).join('');
-
-      const stackEl = document.getElementById('modal-stack');
-      stackEl.innerHTML = proj.stack.map(s => `
-        <span class="px-3 py-1 rounded-lg text-xs font-mono-code glass border border-violet-500/30">${s}</span>
-      `).join('');
+      document.getElementById('modal-stack').innerHTML = p.stack.map(s =>
+        `<span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-code tech-pill">${s}</span>`
+      ).join('');
 
       modalEl.classList.remove('hidden');
       modalEl.classList.add('flex');
-    }
-
-    function openProjectById(projectId) {
-      currentFilteredProjects = [...projects];
-      const idx = currentFilteredProjects.findIndex(p => p.id === projectId);
-      if (idx !== -1) openProjectModal(idx);
     }
 
     function closeProjectModal() {
@@ -1308,8 +927,8 @@
     }
 
     function navigateModal(dir) {
-      currentModalIndex = (currentModalIndex + dir + currentFilteredProjects.length) % currentFilteredProjects.length;
-      openProjectModal(currentModalIndex);
+      currentModalIdx = (currentModalIdx + dir + currentFiltered.length) % currentFiltered.length;
+      openProjectModal(currentModalIdx);
     }
 
     window.addEventListener('keydown', e => {
@@ -1319,26 +938,24 @@
       if (e.key === 'ArrowLeft') navigateModal(-1);
     });
 
-    // 4. Interactive 3D Card Tilt Effect
+    // 4. Smooth 3D Card Perspective Tilt
     function initTiltCards() {
       document.querySelectorAll('.tilt-card').forEach(card => {
         card.addEventListener('mousemove', e => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -6;
-          const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 6;
-          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          const r = card.getBoundingClientRect();
+          const rx = ((e.clientY - r.top - r.height / 2) / (r.height / 2)) * -7;
+          const ry = ((e.clientX - r.left - r.width / 2) / (r.width / 2)) * 7;
+          card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.01,1.01,1.01)`;
         });
         card.addEventListener('mouseleave', () => {
-          card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+          card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)`;
         });
       });
     }
 
-    renderProjects('all');
+    renderProjects('featured');
 
-    // 5. SherBot AI Recruiter Assistant (Trained on Latest 2026 Resume)
+    // 5. Concise SherBot AI Assistant
     const chatWin = document.getElementById('ai-chat-window');
     const chatMessages = document.getElementById('ai-messages');
     const chatInput = document.getElementById('ai-input');
@@ -1348,213 +965,230 @@
       chatWin.classList.toggle('flex');
     }
 
-    function appendMessage(html, isUser = false) {
-      const div = document.createElement('div');
-      div.className = isUser
-        ? "keep-white ml-auto max-w-[85%] rounded-2xl rounded-tr-sm p-3 bg-gradient-to-r from-violet-600 to-cyan-600 text-white"
-        : "glass rounded-2xl rounded-tl-sm p-3.5 text-slate-200 leading-relaxed space-y-2";
-      div.innerHTML = html;
-      chatMessages.appendChild(div);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
+    function askAI(q) {
+      const userDiv = document.createElement('div');
+      userDiv.className = "ml-auto max-w-[82%] rounded-2xl rounded-tr-sm p-2.5 bg-violet-600 text-white";
+      userDiv.textContent = q;
+      chatMessages.appendChild(userDiv);
 
-    function generateLocalResumeResponse(q) {
-      const query = q.toLowerCase();
-      if (query.includes('ict') || query.includes('current') || query.includes('webdesk') || query.includes('experience') || query.includes('work')) {
-        return `
-          <p><strong>Current Role (July 2026 – Present):</strong> Sher Khan is a <strong>Junior .NET Developer at ICT Systems Pvt Ltd</strong> in Karachi, contributing to <strong>WebDesk Easy</strong> (an enterprise ERP SaaS product built with ASP.NET Core MVC, EF Core, Dapper, Repository Pattern, RDLC reports, and Web Forms).</p>
-          <p><strong>Previous Role (Jan 2022 – June 2026):</strong> Worked 4.5 years as a part-time <strong>Software Developer at Research Gate, Pakistan</strong>, delivering custom ERP, accounting, school, academy, super mart, and restaurant software for <strong>10+ local businesses</strong>.</p>
-        `;
+      const lower = q.toLowerCase();
+      let reply = "Sher Khan is a <strong>.NET Software Engineer</strong> (BSCS SZABIST, <strong>3.63 CGPA</strong>) skilled in C#, ASP.NET Core MVC/API, EF Core, Dapper, Angular, SignalR, Docker/RAG, and Crystal/RDLC Reports.";
+      if (lower.includes('ict') || lower.includes('current')) {
+        reply = "Sher works at <strong>ICT Systems Pvt Ltd</strong> (July 2026–Present) building <strong>WebDesk Easy (ERP SaaS)</strong> with ASP.NET Core MVC, EF Core, Dapper, Repository Pattern & RDLC Reports.";
+      } else if (lower.includes('zab') || lower.includes('ai')) {
+        reply = "He built <strong>ZAB Careers</strong> (Angular + .NET Core + Mistral AI resume analyzer) and <strong>ZAB GPT</strong> (Docker + AnythingLLM + OpenRouter RAG assistant).";
+      } else if (lower.includes('cgpa') || lower.includes('szabist')) {
+        reply = "Graduated with a <strong>3.63 / 4.0 CGPA</strong> in BSCS from SZABIST, served as <strong>Devsinc Campus Ambassador</strong>, and scored in the <strong>82.7 Percentile</strong> on the HEC NCEAC test.";
       }
-      if (query.includes('zab') || query.includes('ats') || query.includes('gpt') || query.includes('ai') || query.includes('rag') || query.includes('mistral')) {
-        return `
-          <p>Sher Khan engineered two flagship AI systems for SZABIST University:</p>
-          <ul class="list-disc pl-4 space-y-1">
-            <li><strong>ZAB Careers (FYP):</strong> AI Recruitment & ATS built with <strong>Angular, ASP.NET Core Web API, SQL Server, JWT, BCrypt, SMTP, and Mistral AI</strong> for automated resume analysis.</li>
-            <li><strong>ZAB GPT:</strong> Custom RAG AI assistant built with <strong>Docker, AnythingLLM, and OpenRouter</strong> over PDF, DOCX, and Markdown university career datasets.</li>
-          </ul>
-          <div class="pt-2 flex flex-wrap gap-1.5">
-            <button onclick="openProjectById(0)" class="keep-white px-2.5 py-1 rounded-lg text-[11px] bg-violet-600">Inspect ZAB Careers</button>
-            <button onclick="openProjectById(1)" class="keep-white px-2.5 py-1 rounded-lg text-[11px] bg-cyan-600">Inspect ZAB GPT</button>
-          </div>
-        `;
-      }
-      if (query.includes('cgpa') || query.includes('szabist') || query.includes('education') || query.includes('devsinc') || query.includes('achievement') || query.includes('nceac')) {
-        return `
-          <p><strong>Education:</strong> BS Computer Science from <strong>SZABIST University</strong> (2022–2026) with a <strong>3.63 / 4.0 CGPA</strong>.</p>
-          <p><strong>Key Achievements:</strong></p>
-          <ul class="list-disc pl-4 space-y-1">
-            <li><strong>Devsinc Campus Ambassador</strong> (2025–2026)</li>
-            <li><strong>82.7 Percentile</strong> in the National Skill Competency Test (HEC & NCEAC)</li>
-          </ul>
-        `;
-      }
-      if (query.includes('contact') || query.includes('hire') || query.includes('phone') || query.includes('email')) {
-        return `
-          <p>You can reach Sher Khan directly at:</p>
-          <ul class="list-disc pl-4 space-y-1">
-            <li><strong>Email:</strong> <a href="mailto:sherbalochcs@gmail.com" class="text-cyan-400 underline">sherbalochcs@gmail.com</a></li>
-            <li><strong>Phone / WhatsApp:</strong> <a href="tel:+923282342800" class="text-emerald-400 underline">+92 328 2342800</a></li>
-            <li><strong>Location:</strong> Karachi, Pakistan</li>
-          </ul>
-        `;
-      }
-      return `
-        <p>Sher Khan is a <strong>.NET Software Engineer</strong> (BSCS from SZABIST, <strong>3.63 CGPA</strong>) skilled in <strong>C#, ASP.NET Core MVC, Web API, EF Core, Dapper, Angular, SignalR, Docker/RAG, RDLC, and SAP Crystal Reports</strong>.</p>
-        <div class="pt-1 flex flex-wrap gap-1.5">
-          <button onclick="openProjectById(0)" class="keep-white px-2.5 py-1 rounded-lg text-[11px] bg-violet-600">ZAB Careers (FYP)</button>
-          <button onclick="openProjectById(2)" class="keep-white px-2.5 py-1 rounded-lg text-[11px] bg-cyan-600">Geofence Attendance</button>
-          <button onclick="openProjectById(5)" class="keep-white px-2.5 py-1 rounded-lg text-[11px] bg-emerald-600">Commercial ERP</button>
-        </div>
-      `;
-    }
 
-    function askAI(promptText) {
-      appendMessage(promptText, true);
       setTimeout(() => {
-        appendMessage(generateLocalResumeResponse(promptText), false);
-      }, 240);
+        const botDiv = document.createElement('div');
+        botDiv.className = "tech-pill rounded-2xl rounded-tl-sm p-3 leading-relaxed";
+        botDiv.innerHTML = reply;
+        chatMessages.appendChild(botDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 200);
     }
 
     function handleChatSubmit(e) {
       e.preventDefault();
-      const text = chatInput.value.trim();
-      if (!text) return;
+      if (!chatInput.value.trim()) return;
+      askAI(chatInput.value.trim());
       chatInput.value = '';
-      askAI(text);
     }
 
-    // 6. Three.js 3D Interactive Scene + Light/Dark Theme Sync
+    // 6. Enhanced Three.js Multi-Layer 3D Gyroscope & Floating Polyhedrons
     const canvas = document.getElementById('webgl-canvas');
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 0, 18);
+    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 20);
 
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
     scene.add(ambientLight);
-    const pointLight1 = new THREE.PointLight(0x8b5cf6, 3, 50);
-    pointLight1.position.set(10, 10, 10);
-    scene.add(pointLight1);
-    const pointLight2 = new THREE.PointLight(0x06b6d4, 3, 50);
-    pointLight2.position.set(-10, -10, 8);
-    scene.add(pointLight2);
+    const dirLight1 = new THREE.PointLight(0x7c3aed, 4, 60);
+    dirLight1.position.set(12, 12, 12);
+    scene.add(dirLight1);
+    const dirLight2 = new THREE.PointLight(0x06b6d4, 4, 60);
+    dirLight2.position.set(-12, -10, 10);
+    scene.add(dirLight2);
 
-    const coreGroup = new THREE.Group();
-    scene.add(coreGroup);
+    // Main 3D Gyroscope Assembly
+    const gyroGroup = new THREE.Group();
+    scene.add(gyroGroup);
 
-    const icoGeo = new THREE.IcosahedronGeometry(3.2, 1);
-    const icoMat = new THREE.MeshStandardMaterial({
-      color: 0x8b5cf6,
+    // Inner Faceted Core
+    const coreGeo = new THREE.IcosahedronGeometry(2.6, 1);
+    const coreMat = new THREE.MeshStandardMaterial({
+      color: 0x6d28d9,
       wireframe: true,
-      emissive: 0x4c1d95,
-      emissiveIntensity: 0.5
+      transparent: true,
+      opacity: 0.55
     });
-    const icoMesh = new THREE.Mesh(icoGeo, icoMat);
-    coreGroup.add(icoMesh);
+    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+    gyroGroup.add(coreMesh);
 
-    const ringGeo = new THREE.TorusKnotGeometry(4.8, 0.12, 120, 16);
-    const ringMat = new THREE.MeshStandardMaterial({
+    // Inner Glowing Solid Octahedron
+    const innerGeo = new THREE.OctahedronGeometry(1.4, 0);
+    const innerMat = new THREE.MeshStandardMaterial({
       color: 0x06b6d4,
-      wireframe: true,
+      roughness: 0.2,
+      metalness: 0.8,
       transparent: true,
       opacity: 0.35
     });
-    const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-    coreGroup.add(ringMesh);
-    coreGroup.position.set(5, 1, 0);
+    const innerMesh = new THREE.Mesh(innerGeo, innerMat);
+    gyroGroup.add(innerMesh);
 
-    const nodesGroup = new THREE.Group();
-    scene.add(nodesGroup);
-    const nodeGeo = new THREE.OctahedronGeometry(0.42, 0);
-    for (let i = 0; i < 28; i++) {
+    // Gyro Ring 1
+    const ring1Geo = new THREE.TorusGeometry(3.8, 0.06, 16, 100);
+    const ring1Mat = new THREE.MeshStandardMaterial({ color: 0x7c3aed, transparent: true, opacity: 0.5 });
+    const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
+    ring1.rotation.x = Math.PI / 3;
+    gyroGroup.add(ring1);
+
+    // Gyro Ring 2
+    const ring2Geo = new THREE.TorusGeometry(4.7, 0.05, 16, 100);
+    const ring2Mat = new THREE.MeshStandardMaterial({ color: 0x0891b2, transparent: true, opacity: 0.45 });
+    const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+    ring2.rotation.y = Math.PI / 4;
+    gyroGroup.add(ring2);
+
+    // Orbiting Satellites
+    const orbitGroup = new THREE.Group();
+    gyroGroup.add(orbitGroup);
+    const satGeo = new THREE.SphereGeometry(0.22, 16, 16);
+    for (let i = 0; i < 6; i++) {
+      const satMat = new THREE.MeshStandardMaterial({ color: i % 2 === 0 ? 0x7c3aed : 0x06b6d4 });
+      const sat = new THREE.Mesh(satGeo, satMat);
+      const angle = (i / 6) * Math.PI * 2;
+      sat.position.set(Math.cos(angle) * 5.4, Math.sin(angle) * 5.4, 0);
+      orbitGroup.add(sat);
+    }
+
+    gyroGroup.position.set(5.5, 1, 0);
+
+    // Floating 3D Geometric Shapes Across Viewport
+    const floaters = [];
+    const shapes = [
+      new THREE.TorusGeometry(0.6, 0.18, 12, 32),
+      new THREE.OctahedronGeometry(0.7, 0),
+      new THREE.TetrahedronGeometry(0.75, 0)
+    ];
+
+    for (let i = 0; i < 18; i++) {
+      const geo = shapes[i % shapes.length];
       const mat = new THREE.MeshStandardMaterial({
-        color: i % 2 === 0 ? 0x8b5cf6 : 0x06b6d4,
-        wireframe: true
+        color: i % 2 === 0 ? 0x7c3aed : 0x0891b2,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.32
       });
-      const mesh = new THREE.Mesh(nodeGeo, mat);
+      const mesh = new THREE.Mesh(geo, mat);
       mesh.position.set(
-        (Math.random() - 0.5) * 45,
-        (Math.random() - 0.5) * 45,
-        (Math.random() - 0.5) * 25 - 5
+        (Math.random() - 0.5) * 36,
+        (Math.random() - 0.5) * 28,
+        (Math.random() - 0.5) * 14 - 4
       );
-      nodesGroup.add(mesh);
+      scene.add(mesh);
+      floaters.push({
+        mesh,
+        rx: (Math.random() - 0.5) * 0.015,
+        ry: (Math.random() - 0.5) * 0.015,
+        baseY: mesh.position.y,
+        speed: 0.8 + Math.random() * 1.2
+      });
     }
 
-    const starCount = 2200;
-    const starPositions = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount * 3; i++) {
-      starPositions[i] = (Math.random() - 0.5) * 90;
-    }
-    const starGeo = new THREE.BufferGeometry();
-    starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-    const starMat = new THREE.PointsMaterial({
-      color: 0xc4b5fd,
-      size: 0.09,
+    // Subtle Particle Field
+    const pCount = 1200;
+    const pPos = new Float32Array(pCount * 3);
+    for (let i = 0; i < pCount * 3; i++) pPos[i] = (Math.random() - 0.5) * 75;
+    const pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const pMat = new THREE.PointsMaterial({
+      color: 0x6d28d9,
+      size: 0.08,
       transparent: true,
-      opacity: 0.75
+      opacity: 0.35
     });
-    const stars = new THREE.Points(starGeo, starMat);
-    scene.add(stars);
+    const particles = new THREE.Points(pGeo, pMat);
+    scene.add(particles);
 
-    // Light / Dark Mode Switcher
-    let isLightMode = true;
+    // Theme Switcher (Light Mode Default -> Dark Mode Toggle)
+    let isDark = false;
     function toggleTheme() {
-      isLightMode = !isLightMode;
-      document.body.classList.toggle('light-mode', isLightMode);
+      isDark = !isDark;
+      document.body.classList.toggle('dark-mode', isDark);
       const icon = document.getElementById('theme-icon');
       const label = document.getElementById('theme-label');
 
-      if (isLightMode) {
-        icon.className = "fa-solid fa-moon text-violet-600";
-        label.textContent = "Dark";
-        starMat.color.setHex(0x6d28d9);
-        starMat.opacity = 0.45;
-        ringMat.opacity = 0.55;
-      } else {
+      if (isDark) {
         icon.className = "fa-solid fa-sun text-amber-400";
         label.textContent = "Light";
-        starMat.color.setHex(0xc4b5fd);
-        starMat.opacity = 0.75;
-        ringMat.opacity = 0.35;
+        coreMat.color.setHex(0xa855f7);
+        coreMat.opacity = 0.75;
+        pMat.color.setHex(0xc4b5fd);
+        pMat.opacity = 0.65;
+      } else {
+        icon.className = "fa-solid fa-moon text-violet-600";
+        label.textContent = "Dark";
+        coreMat.color.setHex(0x6d28d9);
+        coreMat.opacity = 0.55;
+        pMat.color.setHex(0x6d28d9);
+        pMat.opacity = 0.35;
       }
     }
 
+    // GSAP Scroll Choreography
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(gyroGroup.position, {
+      x: -5.5,
+      y: -1.5,
+      z: 2.5,
+      scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 1.2 }
+    });
+    gsap.to(gyroGroup.rotation, {
+      x: Math.PI * 1.5,
+      y: Math.PI * 2.5,
+      scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 1.2 }
+    });
+
+    // Cursor Parallax + Render Loop
     let mouseX = 0, mouseY = 0;
     window.addEventListener('mousemove', e => {
       mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
       mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
     });
 
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.to(coreGroup.position, {
-      x: -5,
-      y: -1,
-      z: 2,
-      scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 1.5 }
-    });
-    gsap.to(coreGroup.rotation, {
-      x: Math.PI * 2,
-      y: Math.PI * 3,
-      scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 1.5 }
-    });
-
     const clock = new THREE.Clock();
     function animate() {
       requestAnimationFrame(animate);
-      const elapsed = clock.getElapsedTime();
-      icoMesh.rotation.y = elapsed * 0.25;
-      icoMesh.rotation.x = elapsed * 0.15;
-      ringMesh.rotation.z = -elapsed * 0.18;
-      stars.rotation.y = elapsed * 0.02;
-      nodesGroup.rotation.y = elapsed * 0.04;
+      const t = clock.getElapsedTime();
 
-      camera.position.x += (mouseX * 2.2 - camera.position.x) * 0.05;
-      camera.position.y += (-mouseY * 2.2 - camera.position.y) * 0.05;
+      coreMesh.rotation.y = t * 0.3;
+      innerMesh.rotation.x = -t * 0.45;
+      innerMesh.rotation.y = t * 0.35;
+      ring1.rotation.z = t * 0.4;
+      ring2.rotation.x = -t * 0.35;
+      orbitGroup.rotation.z = -t * 0.5;
+      orbitGroup.rotation.x = Math.sin(t * 0.5) * 0.4;
+
+      floaters.forEach((f, idx) => {
+        f.mesh.rotation.x += f.rx;
+        f.mesh.rotation.y += f.ry;
+        f.mesh.position.y = f.baseY + Math.sin(t * f.speed + idx) * 0.6;
+      });
+
+      particles.rotation.y = t * 0.02;
+
+      camera.position.x += (mouseX * 2.5 - camera.position.x) * 0.05;
+      camera.position.y += (-mouseY * 2.5 - camera.position.y) * 0.05;
       camera.lookAt(scene.position);
+
       renderer.render(scene, camera);
     }
     animate();
